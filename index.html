@@ -1,0 +1,893 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Bruna Amaral · Perfumaria Digital Natura & Boticário</title>
+<meta name="description" content="Perfumes Natura e O Boticário com compra 100% segura no site oficial da marca e entrega em todo o Brasil. Consultora Bruna Amaral — São José dos Campos/SP.">
+<meta name="theme-color" content="#2A0F2E">
+<link rel="manifest" href="manifest.json">
+<link rel="icon" href="icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="icon-192.png">
+<meta property="og:title" content="Bruna Amaral · Perfumaria Digital">
+<meta property="og:description" content="Escolha seu perfume com ajuda da IA, compre no site oficial da Natura ou do Boticário e receba em casa. Envio para todo o Brasil.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcode-generator/1.4.4/qrcode.min.js"></script>
+<style>
+:root{
+  --plum:#2A0F2E; --plum2:#3D1744; --plum3:#54205E;
+  --rose:#E8A6B8; --rose2:#F3C8D3; --gold:#D4A857; --gold2:#F1D59A;
+  --cream:#FBF6F1; --ink:#1E1320; --mute:#7A6B7E; --line:#EADFE4;
+  --ok:#2E9E6B; --warn:#D98A1F; --bad:#C94A4A;
+  --nat:#F58220; --bot:#2C7A5A; --ig:#C13584; --wa:#25D366;
+  --r:18px; --sh:0 10px 30px rgba(42,15,46,.12);
+  --font:'Inter',system-ui,sans-serif; --serif:'Cormorant Garamond',Georgia,serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{font-family:var(--font);background:var(--cream);color:var(--ink);line-height:1.5;min-height:100vh}
+a{color:inherit}
+button{font-family:inherit;cursor:pointer;border:0;background:none;color:inherit}
+input,select,textarea{font-family:inherit;font-size:15px;color:var(--ink)}
+h1,h2,h3{font-family:var(--serif);font-weight:600;line-height:1.1;letter-spacing:-.01em}
+.wrap{max-width:1100px;margin:0 auto;padding:0 18px}
+.hide{display:none!important}
+.sr{position:absolute;left:-9999px}
+
+/* ===== PUBLIC VITRINE ===== */
+#site{display:none}
+.topbar{position:sticky;top:0;z-index:50;background:rgba(251,246,241,.86);backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
+.topbar .wrap{display:flex;align-items:center;justify-content:space-between;height:64px}
+.brand{display:flex;align-items:center;gap:10px;font-weight:700;text-decoration:none}
+.brand .mono{width:38px;height:38px;border-radius:12px;background:linear-gradient(135deg,var(--plum),var(--plum3));color:var(--gold2);display:grid;place-items:center;font-family:var(--serif);font-size:22px;font-weight:700}
+.brand small{display:block;font-weight:500;color:var(--mute);font-size:11px;letter-spacing:.14em;text-transform:uppercase}
+.navlinks{display:flex;gap:6px;align-items:center}
+.navlinks a{font-size:13px;font-weight:600;padding:8px 12px;border-radius:10px;text-decoration:none;color:var(--plum2)}
+.navlinks a:hover{background:#fff}
+.navlinks a.btn{color:#fff;padding:9px 14px}.navlinks a.btn:hover{background:var(--plum3)}
+@media(max-width:720px){.navlinks .opt{display:none}}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:13px 20px;border-radius:999px;font-weight:700;font-size:15px;text-decoration:none;transition:.2s;white-space:nowrap}
+.btn:active{transform:scale(.98)}
+.btn-primary{background:linear-gradient(135deg,var(--plum2),var(--plum3));color:#fff;box-shadow:0 10px 24px rgba(61,23,68,.3)}
+.btn-gold{background:linear-gradient(135deg,var(--gold),#C08F3A);color:#2A0F2E}
+.btn-nat{background:var(--nat);color:#fff}
+.btn-bot{background:var(--bot);color:#fff}
+.btn-wa{background:var(--wa);color:#fff}
+.btn-ig{background:linear-gradient(45deg,#F58529,#DD2A7B,#8134AF);color:#fff}
+.btn-ghost{background:#fff;border:1.5px solid var(--line);color:var(--plum2)}
+.btn-sm{padding:9px 14px;font-size:13px}
+.btn-xs{padding:6px 10px;font-size:12px;border-radius:9px}
+.hero{position:relative;overflow:hidden;background:radial-gradient(1200px 500px at 70% -20%,#6B2C78 0%,var(--plum) 55%,#180818 100%);color:#fff;padding:54px 0 70px}
+.hero::after{content:"";position:absolute;inset:0;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Ccircle cx='60' cy='60' r='1' fill='%23F1D59A' opacity='.35'/%3E%3C/svg%3E");pointer-events:none}
+.hero .wrap{position:relative;z-index:1;display:grid;grid-template-columns:1.2fr .8fr;gap:36px;align-items:center}
+@media(max-width:860px){.hero .wrap{grid-template-columns:1fr}.hero{padding:36px 0 46px}}
+.eyebrow{display:inline-flex;align-items:center;gap:8px;font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--gold2);font-weight:700;background:rgba(255,255,255,.08);padding:7px 12px;border-radius:999px;border:1px solid rgba(241,213,154,.3)}
+.hero h1{font-size:clamp(38px,6vw,64px);margin:18px 0 14px;color:#fff}
+.hero h1 em{font-style:italic;color:var(--gold2)}
+.hero p.lead{font-size:17px;color:#E9D9EC;max-width:560px}
+.hero-cta{display:flex;flex-wrap:wrap;gap:12px;margin-top:26px}
+.trust-row{display:flex;flex-wrap:wrap;gap:16px;margin-top:26px;font-size:13px;color:#E9D9EC}
+.trust-row span{display:flex;align-items:center;gap:6px}
+.hero-card{background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.14);border-radius:24px;padding:22px;backdrop-filter:blur(8px)}
+.hero-card h3{font-size:24px;color:#fff;margin-bottom:6px}
+.hero-card p{color:#E9D9EC;font-size:14px;margin-bottom:14px}
+.steps{display:grid;gap:10px}
+.step{display:flex;gap:12px;align-items:flex-start;background:rgba(0,0,0,.18);padding:12px;border-radius:14px;font-size:14px}
+.step b{width:28px;height:28px;border-radius:50%;background:var(--gold);color:var(--plum);display:grid;place-items:center;font-size:13px;flex:none}
+section.sec{padding:56px 0}
+section.sec.alt{background:#fff}
+.sec-head{text-align:center;max-width:640px;margin:0 auto 32px}
+.sec-head h2{font-size:clamp(30px,4.6vw,44px);color:var(--plum)}
+.sec-head p{color:var(--mute);margin-top:8px}
+.kicker{font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--gold);font-weight:800}
+.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.grid4{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+@media(max-width:860px){.grid3,.grid4{grid-template-columns:1fr 1fr}}
+@media(max-width:520px){.grid3,.grid4{grid-template-columns:1fr}}
+.card{background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:20px;box-shadow:var(--sh)}
+.card h3{font-size:22px;color:var(--plum);margin-bottom:6px}
+.card p{color:var(--mute);font-size:14px}
+.ico{width:46px;height:46px;border-radius:14px;background:linear-gradient(135deg,var(--rose2),#fff);display:grid;place-items:center;font-size:22px;margin-bottom:12px;border:1px solid var(--line)}
+
+/* Quiz */
+.quiz{background:linear-gradient(135deg,#fff,#FFF6F8);border:1px solid var(--line);border-radius:28px;padding:28px;box-shadow:var(--sh);max-width:760px;margin:0 auto}
+.qprog{height:6px;background:var(--line);border-radius:99px;overflow:hidden;margin-bottom:22px}
+.qprog i{display:block;height:100%;background:linear-gradient(90deg,var(--gold),var(--rose));width:0;transition:.4s}
+.qq{font-family:var(--serif);font-size:28px;color:var(--plum);margin-bottom:16px}
+.qopts{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+@media(max-width:520px){.qopts{grid-template-columns:1fr}}
+.qopt{text-align:left;padding:14px 16px;border:1.5px solid var(--line);border-radius:14px;background:#fff;font-size:15px;font-weight:500;transition:.15s;display:flex;gap:10px;align-items:center}
+.qopt:hover{border-color:var(--gold);transform:translateY(-1px)}
+.qopt.sel{border-color:var(--plum3);background:#FBF0F3}
+.qopt .em{font-size:22px}
+.qnav{display:flex;justify-content:space-between;margin-top:18px}
+.result-hero{background:linear-gradient(135deg,var(--plum),var(--plum3));color:#fff;border-radius:20px;padding:22px;margin-bottom:16px}
+.result-hero h3{color:var(--gold2);font-size:30px}
+.prod{display:flex;gap:14px;align-items:center;border:1px solid var(--line);border-radius:16px;padding:14px;background:#fff;margin-bottom:10px}
+.prod .pic{width:62px;height:62px;border-radius:14px;flex:none;display:grid;place-items:center;font-size:28px;background:linear-gradient(135deg,var(--rose2),#fff);border:1px solid var(--line)}
+.prod .pic.b{background:linear-gradient(135deg,#D7F2E6,#fff)}
+.prod b{display:block;font-size:16px;color:var(--plum)}
+.prod small{color:var(--mute);display:block;font-size:13px}
+.tag{display:inline-block;font-size:11px;font-weight:700;padding:3px 9px;border-radius:999px;letter-spacing:.04em;text-transform:uppercase}
+.tag.nat{background:#FFE9D6;color:#B35A10}
+.tag.bot{background:#DDF3E8;color:#1E6A48}
+.tag.gold{background:#FBEFD2;color:#8A6417}
+.tag.plum{background:#EFE3F2;color:var(--plum3)}
+
+/* Catalog */
+.chips{display:flex;gap:8px;flex-wrap:wrap;justify-content:center;margin-bottom:22px}
+.chip{padding:8px 14px;border-radius:999px;border:1.5px solid var(--line);background:#fff;font-size:13px;font-weight:600;color:var(--plum2)}
+.chip.on{background:var(--plum);color:#fff;border-color:var(--plum)}
+.search{display:flex;gap:8px;max-width:520px;margin:0 auto 18px}
+.search input{flex:1;padding:12px 16px;border-radius:999px;border:1.5px solid var(--line);background:#fff}
+.pgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:14px}
+.pcard{background:#fff;border:1px solid var(--line);border-radius:18px;padding:16px;display:flex;flex-direction:column;gap:8px;transition:.2s}
+.pcard:hover{transform:translateY(-3px);box-shadow:var(--sh)}
+.pcard .top{display:flex;justify-content:space-between;align-items:flex-start}
+.pcard .big{font-size:34px}
+.pcard h4{font-size:17px;color:var(--plum);font-family:var(--font);font-weight:700}
+.pcard p{font-size:13px;color:var(--mute);flex:1}
+.pcard .notes{font-size:12px;color:var(--plum2);font-style:italic}
+.pcard .act{display:flex;gap:6px;margin-top:6px}
+.pcard .act .btn{flex:1}
+
+/* Kits */
+.kit{background:linear-gradient(160deg,#fff,#FFF5F8);border:1px solid var(--line);border-radius:22px;padding:22px;position:relative;overflow:hidden}
+.kit .ribbon{position:absolute;top:14px;right:-34px;transform:rotate(35deg);background:var(--gold);color:var(--plum);font-size:11px;font-weight:800;padding:4px 44px;letter-spacing:.1em}
+.kit h3{font-size:24px;color:var(--plum)}
+.kit ul{list-style:none;margin:12px 0;display:grid;gap:6px;font-size:14px}
+.kit li::before{content:"✦ ";color:var(--gold)}
+.promo{background:linear-gradient(135deg,#180818,var(--plum3));color:#fff;border-radius:26px;padding:34px;display:grid;grid-template-columns:1.3fr .7fr;gap:24px;align-items:center}
+@media(max-width:760px){.promo{grid-template-columns:1fr}}
+.promo h2{font-size:clamp(28px,4vw,42px);color:var(--gold2)}
+.promo p{color:#E9D9EC;margin-top:8px}
+.countdown{display:flex;gap:10px;justify-content:center}
+.countdown div{background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.18);border-radius:14px;padding:12px 10px;min-width:64px;text-align:center}
+.countdown b{display:block;font-size:28px;font-family:var(--serif)}
+.countdown small{font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--rose2)}
+.faq details{background:#fff;border:1px solid var(--line);border-radius:14px;padding:14px 18px;margin-bottom:10px}
+.faq summary{font-weight:700;cursor:pointer;color:var(--plum)}
+.faq p{margin-top:8px;color:var(--mute);font-size:14px}
+footer{background:var(--plum);color:#E9D9EC;padding:36px 0 110px;font-size:13px}
+footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:16px;align-items:center}
+footer .sig{color:var(--gold2);font-style:italic;font-family:var(--serif);font-size:16px}
+.fab{position:fixed;right:16px;bottom:16px;z-index:60;display:flex;flex-direction:column;gap:10px}
+.fab a,.fab button{width:56px;height:56px;border-radius:50%;display:grid;place-items:center;color:#fff;box-shadow:0 10px 26px rgba(0,0,0,.25);font-size:26px;text-decoration:none}
+.fab .wa{background:var(--wa)}
+.fab .ia{background:linear-gradient(135deg,var(--plum2),var(--plum3));font-size:22px;font-weight:800;color:var(--gold2)}
+
+/* Chat (public concierge) */
+.chat{position:fixed;right:16px;bottom:88px;width:min(380px,calc(100vw - 32px));height:min(560px,calc(100vh - 120px));background:#fff;border-radius:22px;box-shadow:0 24px 60px rgba(0,0,0,.3);z-index:70;display:none;flex-direction:column;overflow:hidden;border:1px solid var(--line)}
+.chat.open{display:flex}
+.chat header{background:linear-gradient(135deg,var(--plum),var(--plum3));color:#fff;padding:14px 16px;display:flex;align-items:center;gap:10px}
+.chat header .av{width:36px;height:36px;border-radius:50%;background:var(--gold);color:var(--plum);display:grid;place-items:center;font-weight:800}
+.chat header b{display:block;font-size:14px}
+.chat header small{font-size:11px;color:var(--rose2)}
+.chat .msgs{flex:1;overflow:auto;padding:14px;display:flex;flex-direction:column;gap:10px;background:#FBF6F1}
+.m{max-width:85%;padding:10px 13px;border-radius:16px;font-size:14px;line-height:1.45;white-space:pre-wrap}
+.m.bot{background:#fff;border:1px solid var(--line);border-bottom-left-radius:4px;align-self:flex-start}
+.m.user{background:var(--plum2);color:#fff;border-bottom-right-radius:4px;align-self:flex-end}
+.m a{color:var(--plum3);font-weight:700}
+.m.bot .btn{margin-top:8px}
+.chat form{display:flex;gap:8px;padding:10px;border-top:1px solid var(--line);background:#fff}
+.chat input{flex:1;padding:11px 14px;border-radius:999px;border:1.5px solid var(--line)}
+.sugg{display:flex;gap:6px;flex-wrap:wrap;padding:0 10px 8px;background:#fff}
+.sugg button{font-size:12px;padding:6px 10px;border-radius:999px;background:#F3EAF5;color:var(--plum3);font-weight:600}
+.typing i{display:inline-block;width:6px;height:6px;border-radius:50%;background:var(--mute);margin-right:3px;animation:bl 1s infinite}
+.typing i:nth-child(2){animation-delay:.2s}.typing i:nth-child(3){animation-delay:.4s}
+@keyframes bl{0%,100%{opacity:.2}50%{opacity:1}}
+
+/* ===== PANEL ===== */
+#panel{display:none;min-height:100vh;background:#F4EFF5}
+.plogin{min-height:100vh;display:grid;place-items:center;background:radial-gradient(900px 500px at 50% -10%,#6B2C78,var(--plum) 60%,#180818)}
+.plogin .box{background:#fff;border-radius:26px;padding:34px;width:min(420px,92vw);text-align:center;box-shadow:0 30px 80px rgba(0,0,0,.4)}
+.plogin h2{font-size:30px;color:var(--plum)}
+.plogin p{color:var(--mute);font-size:14px;margin:8px 0 18px}
+.pin{display:flex;gap:8px;justify-content:center;margin-bottom:16px}
+.pin input{width:54px;height:60px;text-align:center;font-size:26px;border:2px solid var(--line);border-radius:14px;font-weight:700}
+.pshell{display:grid;grid-template-columns:250px 1fr;min-height:100vh}
+@media(max-width:900px){.pshell{grid-template-columns:1fr}}
+.pside{background:var(--plum);color:#E9D9EC;padding:22px 16px;position:sticky;top:0;height:100vh;overflow:auto}
+@media(max-width:900px){.pside{position:fixed;inset:0;z-index:80;transform:translateX(-100%);transition:.25s;height:100vh}.pside.open{transform:none}}
+.pside .brand{color:#fff;margin-bottom:22px}
+.pside .brand .mono{background:var(--gold);color:var(--plum)}
+.pnav{display:grid;gap:4px}
+.pnav button{display:flex;align-items:center;gap:10px;padding:11px 12px;border-radius:12px;text-align:left;font-weight:600;font-size:14px;color:#D9C7DD}
+.pnav button:hover{background:rgba(255,255,255,.07)}
+.pnav button.on{background:rgba(255,255,255,.12);color:#fff}
+.pnav .sep{margin:12px 8px 6px;font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:#9C85A1}
+.pmain{padding:22px;min-width:0}
+.ptop{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:18px}
+.ptop h2{font-size:30px;color:var(--plum)}
+.ptop .sub{color:var(--mute);font-size:13px}
+.burger{display:none;width:42px;height:42px;border-radius:12px;background:#fff;border:1px solid var(--line);font-size:20px}
+@media(max-width:900px){.burger{display:grid;place-items:center}}
+.pview{display:none}.pview.on{display:block}
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:18px}
+@media(max-width:900px){.stats{grid-template-columns:1fr 1fr}}
+.stat{background:#fff;border:1px solid var(--line);border-radius:16px;padding:16px}
+.stat small{font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--mute);font-weight:700}
+.stat b{display:block;font-size:30px;font-family:var(--serif);color:var(--plum);margin-top:2px}
+.stat span{font-size:12px;color:var(--ok);font-weight:600}
+.panel-card{background:#fff;border:1px solid var(--line);border-radius:18px;padding:18px;margin-bottom:14px}
+.panel-card h3{font-size:21px;color:var(--plum);margin-bottom:4px}
+.panel-card .desc{color:var(--mute);font-size:13px;margin-bottom:12px}
+.frm{display:grid;gap:10px}
+.frm label{font-size:12px;font-weight:700;color:var(--plum2);display:grid;gap:4px}
+.frm input,.frm select,.frm textarea{padding:11px 12px;border:1.5px solid var(--line);border-radius:12px;background:#FCFAFD;width:100%}
+.frm textarea{min-height:90px;resize:vertical}
+.row2{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.row3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px}
+@media(max-width:640px){.row2,.row3{grid-template-columns:1fr}}
+.out{background:#FBF6F1;border:1px dashed #D8C7D0;border-radius:14px;padding:14px;white-space:pre-wrap;font-size:14px;position:relative;line-height:1.55}
+.out .cp{position:absolute;top:8px;right:8px}
+.outs{display:grid;gap:12px}
+.toolbar{display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin-bottom:12px}
+.table{width:100%;border-collapse:collapse;font-size:13px}
+.table th{text-align:left;font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--mute);padding:8px;border-bottom:1px solid var(--line)}
+.table td{padding:10px 8px;border-bottom:1px solid var(--line);vertical-align:middle}
+.pill{display:inline-block;padding:3px 9px;border-radius:999px;font-size:11px;font-weight:700}
+.pill.novo{background:#E3EEFF;color:#1C4EA0}.pill.quente{background:#FFE5E5;color:#B32020}.pill.comprou{background:#DDF3E8;color:#1E6A48}.pill.frio{background:#EEE;color:#666}.pill.vip{background:#FBEFD2;color:#8A6417}
+.aiBadge{display:inline-flex;align-items:center;gap:6px;font-size:11px;font-weight:700;padding:4px 10px;border-radius:999px;background:#EFE3F2;color:var(--plum3)}
+.aiBadge.on{background:#DDF3E8;color:#1E6A48}
+.cal{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:10px}
+.day{background:#fff;border:1px solid var(--line);border-radius:14px;padding:12px;font-size:13px}
+.day b{display:block;color:var(--plum);font-size:12px;letter-spacing:.06em;text-transform:uppercase}
+.day .t{font-weight:700;margin:4px 0}
+.day .f{font-size:11px;color:var(--mute)}
+.tier{border-radius:22px;padding:22px;border:1px solid var(--line);background:#fff;position:relative}
+.tier.cur{border:2px solid var(--ok)}
+.tier.t2{background:linear-gradient(160deg,#fff,#FFF5F8)}
+.tier.t3{background:linear-gradient(160deg,var(--plum),var(--plum3));color:#fff}
+.tier.t3 h3,.tier.t3 .price{color:var(--gold2)}
+.tier h3{font-size:26px;color:var(--plum)}
+.tier .price{font-size:30px;font-family:var(--serif);font-weight:700;color:var(--plum3);margin:6px 0}
+.tier ul{list-style:none;display:grid;gap:7px;font-size:14px;margin:12px 0}
+.tier li::before{content:"✔ ";color:var(--ok);font-weight:800}
+.tier.t3 li::before{color:var(--gold2)}
+.tier .lbl{position:absolute;top:-12px;left:20px;background:var(--ok);color:#fff;font-size:11px;font-weight:800;padding:4px 10px;border-radius:999px;letter-spacing:.08em}
+.tier.t2 .lbl{background:var(--gold);color:var(--plum)}
+.tier.t3 .lbl{background:var(--rose)}
+.hash{display:flex;flex-wrap:wrap;gap:6px}
+.hash span{background:#EFE3F2;color:var(--plum3);padding:5px 10px;border-radius:999px;font-size:12px;font-weight:600;cursor:pointer}
+.linkrow{display:flex;gap:8px;align-items:center;flex-wrap:wrap;padding:10px;border:1px solid var(--line);border-radius:12px;margin-bottom:8px;background:#FCFAFD}
+.linkrow code{font-size:12px;flex:1;word-break:break-all;color:var(--plum2)}
+.toast{position:fixed;left:50%;bottom:28px;transform:translateX(-50%) translateY(20px);background:var(--plum);color:#fff;padding:12px 18px;border-radius:999px;font-size:14px;font-weight:600;opacity:0;transition:.25s;z-index:999;pointer-events:none}
+.toast.show{opacity:1;transform:translateX(-50%)}
+.note{font-size:12px;color:var(--mute);background:#F7F2F9;border-left:3px solid var(--gold);padding:8px 10px;border-radius:8px;margin-top:8px}
+.qrbox{display:flex;gap:16px;align-items:center;flex-wrap:wrap}
+.qrbox .q{background:#fff;padding:10px;border-radius:12px;border:1px solid var(--line)}
+.progressbar{height:8px;background:#EEE;border-radius:99px;overflow:hidden}
+.progressbar i{display:block;height:100%;background:linear-gradient(90deg,var(--gold),var(--plum3))}
+.spin{display:inline-block;width:16px;height:16px;border:2px solid #fff;border-right-color:transparent;border-radius:50%;animation:sp .7s linear infinite}
+@keyframes sp{to{transform:rotate(360deg)}}
+</style>
+</head>
+<body>
+
+<!-- ============================ VITRINE PÚBLICA ============================ -->
+<div id="site">
+<div class="topbar"><div class="wrap">
+  <a class="brand" href="#/"><span class="mono">B</span><span>Bruna Amaral<small>Perfumaria Digital</small></span></a>
+  <nav class="navlinks">
+    <a class="opt" href="#quiz">Achar meu perfume</a>
+    <a class="opt" href="#catalogo">Catálogo</a>
+    <a class="opt" href="#kits">Kits & Presentes</a>
+    <a class="btn btn-primary btn-sm" href="#quiz">✨ Perfume ideal</a>
+  </nav>
+</div></div>
+
+<section class="hero"><div class="wrap">
+  <div>
+    <span class="eyebrow">★ Consultora oficial Natura & O Boticário</span>
+    <h1>Seu perfume perfeito, <em>entregue na sua casa</em> em qualquer lugar do Brasil.</h1>
+    <p class="lead">Você escolhe aqui com ajuda da nossa IA, compra no site oficial da marca com total segurança (Pix ou cartão) e a própria Natura ou O Boticário envia direto para você. Sem intermediário, sem risco.</p>
+    <div class="hero-cta">
+      <a class="btn btn-nat" data-track="natura" data-link="natura" href="#" target="_blank" rel="noopener">🟠 Loja Natura oficial</a>
+      <a class="btn btn-bot" data-track="boticario" data-link="boticario" href="#" target="_blank" rel="noopener">🟢 Loja Boticário oficial</a>
+      <a class="btn btn-ghost" href="#quiz">Quero ajuda para escolher</a>
+    </div>
+    <div class="trust-row">
+      <span>🔒 Pagamento 100% seguro no site da marca</span>
+      <span>🚚 Entrega em todo o Brasil</span>
+      <span>↩ Troca e garantia da própria marca</span>
+    </div>
+  </div>
+  <div class="hero-card">
+    <h3>Como funciona — em 4 passos</h3>
+    <p>Compra rápida, direta e segura. Eu não vendo pelo WhatsApp e nem entrego em mãos: você compra na própria marca.</p>
+    <div class="steps">
+      <div class="step"><b>1</b><span>Toque no meu link oficial da Natura ou do Boticário.</span></div>
+      <div class="step"><b>2</b><span>Escolha seus perfumes no site oficial e pague por Pix ou cartão, direto para a marca.</span></div>
+      <div class="step"><b>3</b><span>A marca separa, embala e envia para a sua casa, em qualquer cidade do Brasil.</span></div>
+      <div class="step"><b>4</b><span>Você recebe com nota fiscal, rastreio e a garantia oficial. Simples assim. 💜</span></div>
+    </div>
+  </div>
+</div></section>
+
+<section class="sec" id="quiz"><div class="wrap">
+  <div class="sec-head"><span class="kicker">Consultoria com inteligência artificial</span><h2>Descubra o perfume certo para você (ou para presentear)</h2><p>Responda 6 perguntas rápidas. A IA monta o seu perfil olfativo e indica as melhores opções da Natura e do Boticário.</p></div>
+  <div class="quiz" id="quizBox"></div>
+</div></section>
+
+<section class="sec alt" id="porque"><div class="wrap">
+  <div class="sec-head"><span class="kicker">Por que comprar pelo meu link</span><h2>Mesmo preço do site, mais atenção para você</h2></div>
+  <div class="grid4">
+    <div class="card"><div class="ico">🏷️</div><h3>Preço oficial</h3><p>Você paga exatamente o preço e as promoções do site da marca. Nenhuma taxa a mais.</p></div>
+    <div class="card"><div class="ico">💬</div><h3>Consultoria de verdade</h3><p>Dúvida entre dois perfumes? Me chama. Eu ajudo você a acertar na escolha, sem compromisso.</p></div>
+    <div class="card"><div class="ico">🎁</div><h3>Presentes certeiros</h3><p>Kits e combinações pensadas para cada ocasião: aniversário, Natal, Dia das Mães, namorados.</p></div>
+    <div class="card"><div class="ico">🛡️</div><h3>Segurança total</h3><p>Compra, pagamento, entrega e troca feitos pela Natura ou pelo Boticário. Eu só indico o caminho.</p></div>
+  </div>
+</div></section>
+
+<section class="sec" id="catalogo"><div class="wrap">
+  <div class="sec-head"><span class="kicker">Catálogo curado</span><h2>As linhas que mais vendem, explicadas de um jeito simples</h2><p>Os preços e promoções do dia você vê no site oficial — toque em "Ver na loja".</p></div>
+  <div class="search"><input id="catSearch" placeholder="Buscar: amadeirado, doce, masculino, presente..."></div>
+  <div class="chips" id="catChips"></div>
+  <div class="pgrid" id="catGrid"></div>
+</div></section>
+
+<section class="sec alt" id="kits"><div class="wrap">
+  <div class="sec-head"><span class="kicker">Pacote Natura & Combos Boticário</span><h2>Kits prontos para você não errar</h2><p>Montei combinações que funcionam juntas. É só adicionar os itens no carrinho da loja oficial.</p></div>
+  <div class="grid3" id="kitGrid"></div>
+</div></section>
+
+<section class="sec" id="promo"><div class="wrap">
+  <div class="promo">
+    <div><span class="kicker" style="color:var(--rose2)">Calendário de ofertas</span><h2 id="promoTitle">Black Friday Natura & Boticário</h2><p id="promoText">As melhores promoções do ano caem nos sites oficiais. Entre pelo meu link e aproveite com segurança.</p>
+      <div class="hero-cta" style="margin-top:18px"><a class="btn btn-gold" data-track="promo_natura" data-link="natura" href="#" target="_blank" rel="noopener">Ofertas Natura</a><a class="btn btn-ghost" data-track="promo_boticario" data-link="boticario" href="#" target="_blank" rel="noopener" style="background:transparent;color:#fff;border-color:rgba(255,255,255,.4)">Ofertas Boticário</a></div></div>
+    <div class="countdown" id="countdown"></div>
+  </div>
+</div></section>
+
+<section class="sec alt"><div class="wrap">
+  <div class="sec-head"><span class="kicker">Dúvidas frequentes</span><h2>Tudo que você precisa saber antes de comprar</h2></div>
+  <div class="faq" style="max-width:760px;margin:0 auto">
+    <details open><summary>Eu compro de você ou da marca?</summary><p>Da marca. Meu link leva você para a loja oficial da Natura ou do Boticário. O pagamento, o envio e a nota fiscal são da própria marca. Eu recebo a comissão automaticamente por ter indicado.</p></details>
+    <details><summary>Entrega para todo o Brasil mesmo?</summary><p>Sim. A marca envia para qualquer cidade do país, com código de rastreio. O prazo e o frete aparecem no carrinho antes de você pagar.</p></details>
+    <details><summary>Posso pagar por Pix?</summary><p>Sim. Pix, cartão de crédito e as demais formas que o site oficial oferece.</p></details>
+    <details><summary>E se eu não gostar do perfume?</summary><p>Vale a política de troca e garantia oficial da marca. E antes de comprar você pode me chamar: eu ajudo a escolher com calma.</p></details>
+    <details><summary>Os preços são os mesmos do site?</summary><p>Exatamente os mesmos, incluindo promoções e cupons que a marca estiver oferecendo.</p></details>
+  </div>
+</div></section>
+
+<footer><div class="wrap">
+  <div><b style="color:#fff">Bruna Amaral</b> · Consultora digital Natura & O Boticário · São José dos Campos/SP · envio para todo o Brasil<br><a data-track="instagram" data-link="instagram" href="#" target="_blank" rel="noopener">Instagram @bruninhagb16</a> · <a href="#/painel" style="opacity:.5">área da consultora</a></div>
+  <div class="sig">Desenvolvido pelo engenheiro Wellington Costa</div>
+</div></footer>
+
+<div class="fab">
+  <button class="ia" id="openChat" title="Consultora virtual">IA</button>
+  <a class="wa" id="fabWa" data-track="whatsapp" href="#" target="_blank" rel="noopener" title="WhatsApp">💬</a>
+</div>
+<div class="chat" id="chat">
+  <header><div class="av">B</div><div><b>Bru · consultora virtual</b><small>IA treinada para te ajudar a escolher perfumes</small></div><button style="margin-left:auto;font-size:20px;color:#fff" id="closeChat">×</button></header>
+  <div class="msgs" id="msgs"></div>
+  <div class="sugg" id="sugg"></div>
+  <form id="chatForm"><input id="chatIn" placeholder="Ex.: quero um perfume doce para a noite" autocomplete="off"><button class="btn btn-primary btn-sm" type="submit">Enviar</button></form>
+</div>
+</div>
+
+<!-- ============================ PAINEL DA CONSULTORA ============================ -->
+<div id="panel">
+  <div class="plogin" id="plogin"><div class="box">
+    <div class="brand" style="justify-content:center;margin-bottom:14px"><span class="mono">B</span></div>
+    <h2 id="loginTitle">Área da Bruna</h2><p id="loginText">Digite seu PIN de 4 dígitos.</p>
+    <div class="pin"><input maxlength="1" inputmode="numeric"><input maxlength="1" inputmode="numeric"><input maxlength="1" inputmode="numeric"><input maxlength="1" inputmode="numeric"></div>
+    <button class="btn btn-primary" id="loginBtn" style="width:100%">Entrar</button>
+    <p style="margin-top:14px;font-size:12px"><a href="#/">← voltar para a vitrine</a></p>
+  </div></div>
+
+  <div class="pshell hide" id="pshell">
+    <aside class="pside" id="pside">
+      <a class="brand" href="#/"><span class="mono">B</span><span>Bruna Amaral<small style="color:#C9B3CE">Central de vendas</small></span></a>
+      <nav class="pnav" id="pnav">
+        <button data-v="home" class="on">📊 Visão geral</button>
+        <div class="sep">Vender mais</div>
+        <button data-v="ads">🎯 Anúncios com IA</button>
+        <button data-v="links">🔗 Links rastreáveis & QR</button>
+        <button data-v="crm">👥 Clientes & follow-up</button>
+        <button data-v="insta">📸 Radar Instagram</button>
+        <button data-v="cal">🗓️ Calendário de conteúdo</button>
+        <button data-v="kits">🎁 Pacotes & kits</button>
+        <div class="sep">Sistema</div>
+        <button data-v="cfg">⚙️ Configurações & IA</button>
+        <button data-v="up">🚀 Evolução do app</button>
+        <button id="logout" style="color:#F3C8D3">⏏ Sair</button>
+      </nav>
+    </aside>
+    <main class="pmain">
+      <div class="ptop"><div><h2 id="ptitle">Visão geral</h2><div class="sub" id="psub">Tudo que acontece na sua vitrine, em um lugar só.</div></div><div style="display:flex;gap:8px;align-items:center"><span class="aiBadge" id="aiBadge">IA local</span><button class="burger" id="burger">☰</button></div></div>
+
+      <!-- HOME -->
+      <div class="pview on" id="v-home">
+        <div class="stats">
+          <div class="stat"><small>Cliques Natura</small><b id="stNat">0</b><span>pelo seu link</span></div>
+          <div class="stat"><small>Cliques Boticário</small><b id="stBot">0</b><span>pelo seu link</span></div>
+          <div class="stat"><small>Quiz concluídos</small><b id="stQuiz">0</b><span>perfis gerados</span></div>
+          <div class="stat"><small>Leads no CRM</small><b id="stLeads">0</b><span id="stHot"></span></div>
+        </div>
+        <div class="row2">
+          <div class="panel-card"><h3>Plano de ação de hoje</h3><div class="desc">Gerado automaticamente com base no calendário e nos seus clientes.</div><div id="todayPlan"></div></div>
+          <div class="panel-card"><h3>Últimos eventos</h3><div class="desc">Cliques, quiz e contatos registrados neste aparelho.</div><div id="events" style="font-size:13px;display:grid;gap:6px"></div></div>
+        </div>
+        <div class="panel-card"><h3>Seus links oficiais</h3><div class="desc">Copie e cole em bio, stories, anúncios e WhatsApp.</div><div id="homeLinks"></div></div>
+      </div>
+
+      <!-- ADS -->
+      <div class="pview" id="v-ads">
+        <div class="panel-card"><h3>Gerador de anúncios e legendas</h3><div class="desc">Escolha o objetivo e a IA escreve 3 variações prontas. Seu link oficial já entra no lugar certo.</div>
+          <div class="frm">
+            <div class="row3">
+              <label>Plataforma<select id="adPlat"><option>Meta Ads (Instagram/Facebook)</option><option>Legenda Instagram</option><option>Story (sequência de 3 telas)</option><option>Mensagem de WhatsApp</option><option>Status do WhatsApp</option><option>Google Ads (títulos + descrições)</option><option>TikTok / Reels (roteiro 30s)</option></select></label>
+              <label>Marca<select id="adBrand"><option value="natura">Natura</option><option value="boticario">O Boticário</option><option value="ambas">Natura + Boticário</option></select></label>
+              <label>Objetivo<select id="adGoal"><option>Vender perfumes para quem já está pesquisando</option><option>Presente (Natal / aniversário / namorados)</option><option>Black Friday / promoção</option><option>Lançamento ou produto específico</option><option>Reativar clientes antigos</option><option>Ganhar seguidores e autoridade</option></select></label>
+            </div>
+            <div class="row2">
+              <label>Produto / linha (opcional)<input id="adProd" placeholder="Ex.: Kaiak, Essencial, Malbec, Lily..."></label>
+              <label>Tom<select id="adTone"><option>Elegante e direto</option><option>Amigável e próximo</option><option>Urgência (promoção)</option><option>Luxo / sofisticado</option><option>Divertido</option></select></label>
+            </div>
+            <label>Observações (público, cidade, diferencial...)<input id="adNotes" placeholder="Ex.: mulheres 25-45, entrega todo o Brasil, cupom da marca..."></label>
+            <div class="toolbar"><button class="btn btn-primary" id="adGen">✨ Gerar 3 variações</button><button class="btn btn-ghost btn-sm" id="adPreset">Carregar os 3 anúncios base (pesquisa de perfumes)</button></div>
+          </div>
+          <div class="outs" id="adOut"></div>
+          <div class="note">Dica: nos anúncios do Meta, use o link rastreável gerado na aba "Links" para saber de qual campanha veio cada clique.</div>
+        </div>
+      </div>
+
+      <!-- LINKS -->
+      <div class="pview" id="v-links">
+        <div class="row2">
+          <div class="panel-card"><h3>Gerador de link rastreável</h3><div class="desc">Cria um link da loja oficial com etiqueta da campanha (UTM). Assim você sabe o que está dando resultado.</div>
+            <div class="frm">
+              <label>Destino<select id="lkDest"><option value="natura">Loja Natura</option><option value="boticario">Vitrine Boticário</option><option value="site">Minha vitrine (este app)</option></select></label>
+              <div class="row2"><label>Onde vai usar<select id="lkSrc"><option value="instagram">Instagram (bio)</option><option value="stories">Stories</option><option value="whatsapp">WhatsApp</option><option value="facebook">Facebook</option><option value="meta_ads">Meta Ads</option><option value="google_ads">Google Ads</option><option value="tiktok">TikTok</option><option value="qr">QR Code impresso</option></select></label>
+              <label>Nome da campanha<input id="lkCamp" placeholder="Ex.: blackfriday2026"></label></div>
+              <button class="btn btn-primary" id="lkGen">Gerar link</button>
+            </div>
+            <div id="lkOut" style="margin-top:12px"></div>
+          </div>
+          <div class="panel-card"><h3>QR Code</h3><div class="desc">Para cartão, etiqueta, mesa de evento ou story.</div><div class="qrbox"><div class="q" id="qrBox"></div><div><div class="frm"><label>Link do QR<select id="qrSel"><option value="site">Minha vitrine</option><option value="natura">Loja Natura</option><option value="boticario">Vitrine Boticário</option><option value="instagram">Instagram</option></select></label></div><button class="btn btn-ghost btn-sm" id="qrDl" style="margin-top:8px">Baixar PNG</button></div></div></div>
+        </div>
+        <div class="panel-card"><h3>Links salvos</h3><div class="desc">Histórico dos links que você gerou.</div><div id="lkList"></div></div>
+      </div>
+
+      <!-- CRM -->
+      <div class="pview" id="v-crm">
+        <div class="panel-card"><h3>Adicionar cliente</h3><div class="desc">Anote quem demonstrou interesse. A IA sugere a mensagem certa de acompanhamento.</div>
+          <div class="frm"><div class="row3"><label>Nome<input id="cName"></label><label>WhatsApp (DDD+número)<input id="cPhone" placeholder="12999990000"></label><label>Status<select id="cStatus"><option value="novo">Novo</option><option value="quente">Quente</option><option value="comprou">Comprou</option><option value="vip">VIP</option><option value="frio">Frio</option></select></label></div>
+          <div class="row2"><label>Interesse<input id="cInt" placeholder="Ex.: Kaiak masculino, presente para a mãe"></label><label>Cidade<input id="cCity" placeholder="Ex.: Campinas/SP"></label></div>
+          <button class="btn btn-primary" id="cAdd">Salvar cliente</button></div>
+        </div>
+        <div class="panel-card"><div class="toolbar"><h3 style="margin:0">Clientes</h3><input id="cSearch" placeholder="Buscar..." style="padding:8px 12px;border:1.5px solid var(--line);border-radius:10px;margin-left:auto"><button class="btn btn-ghost btn-xs" id="cExport">Exportar CSV</button></div>
+          <div style="overflow:auto"><table class="table"><thead><tr><th>Cliente</th><th>Interesse</th><th>Status</th><th>Último contato</th><th>Ações</th></tr></thead><tbody id="cBody"></tbody></table></div>
+        </div>
+        <div class="panel-card" id="cMsgCard" style="display:none"><h3 id="cMsgTitle">Mensagem sugerida</h3><div class="outs" id="cMsgOut"></div></div>
+      </div>
+
+      <!-- INSTAGRAM -->
+      <div class="pview" id="v-insta">
+        <div class="row2">
+          <div class="panel-card"><h3>Busca inteligente no Instagram</h3><div class="desc">Abre as buscas certas no Instagram para encontrar clientes, concorrentes e tendências.</div>
+            <div class="frm"><label>O que procurar<input id="igQ" placeholder="Ex.: perfume importado, presente dia das mães, perfumaria SJC"></label>
+            <div class="row2"><label>Cidade / região<input id="igCity" value="São José dos Campos"></label><label>Tipo<select id="igType"><option value="tag">Hashtags (clientes e tendências)</option><option value="people">Perfis e concorrentes</option><option value="places">Lugares (lojas, shoppings, bairros)</option></select></label></div>
+            <button class="btn btn-ig" id="igGo">Gerar buscas</button></div>
+            <div id="igOut" style="margin-top:12px"></div>
+          </div>
+          <div class="panel-card"><h3>Hashtags que vendem perfume</h3><div class="desc">Toque para copiar o bloco ideal para cada post.</div>
+            <div class="toolbar"><select id="hsSet" style="padding:8px 12px;border:1.5px solid var(--line);border-radius:10px"><option value="geral">Perfumaria geral</option><option value="natura">Natura</option><option value="boticario">Boticário</option><option value="presente">Presentes</option><option value="masc">Masculino</option><option value="local">Vale do Paraíba / SP</option></select><button class="btn btn-ghost btn-xs" id="hsCopy">Copiar todas</button></div>
+            <div class="hash" id="hsOut"></div>
+          </div>
+        </div>
+        <div class="row2">
+          <div class="panel-card"><h3>Bio otimizada</h3><div class="desc">Versões de bio para o Instagram, com link da vitrine.</div><div class="outs" id="bioOut"></div><button class="btn btn-ghost btn-sm" id="bioGen" style="margin-top:10px">✨ Gerar outras versões</button></div>
+          <div class="panel-card"><h3>Melhores horários & rotina</h3><div class="desc">Rotina de 20 minutos por dia que gera vendas.</div>
+            <div style="font-size:14px;display:grid;gap:8px">
+              <div><b>Horários de pico (perfumaria):</b> 12h–13h · 18h–21h · domingo 20h–22h</div>
+              <div><b>Rotina diária (20 min):</b><br>1) 1 story com produto + link (3 min)<br>2) Responder DMs e comentários (5 min)<br>3) Comentar em 10 posts de perfis-alvo (7 min)<br>4) Mandar 3 follow-ups do CRM (5 min)</div>
+              <div><b>Semanal:</b> 3 posts (dica olfativa, prova social, oferta) + 1 Reels de 15s.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- CALENDAR -->
+      <div class="pview" id="v-cal">
+        <div class="panel-card"><div class="toolbar"><h3 style="margin:0">Próximos 30 dias</h3><button class="btn btn-ghost btn-xs" id="calRegen" style="margin-left:auto">Regerar</button><button class="btn btn-ghost btn-xs" id="calCopy">Copiar tudo</button></div><div class="desc">Cada dia com tema, formato e gancho. Toque num dia para a IA escrever o post completo.</div><div class="cal" id="calGrid"></div></div>
+        <div class="panel-card" id="calOutCard" style="display:none"><h3 id="calOutTitle">Post do dia</h3><div class="outs" id="calOut"></div></div>
+      </div>
+
+      <!-- KITS -->
+      <div class="pview" id="v-kits">
+        <div class="panel-card"><h3>Montar um pacote</h3><div class="desc">Crie combos (ex.: "Pacote Natura Presente Mãe") que aparecem na vitrine pública.</div>
+          <div class="frm"><div class="row3"><label>Nome do pacote<input id="kName" placeholder="Pacote Natura Noite Marcante"></label><label>Marca<select id="kBrand"><option value="natura">Natura</option><option value="boticario">O Boticário</option></select></label><label>Ocasião<input id="kOcc" placeholder="Presente, uso diário, Natal..."></label></div>
+          <label>Itens (um por linha)<textarea id="kItems" placeholder="Kaiak Clássico 100ml&#10;Hidratante Tododia&#10;Sabonete Ekos"></textarea></label>
+          <label>Por que funciona (1 frase)<input id="kWhy" placeholder="Fragrância fresca + cuidado com a pele, presente completo."></label>
+          <button class="btn btn-primary" id="kAdd">Publicar na vitrine</button></div>
+        </div>
+        <div class="panel-card"><h3>Pacotes publicados</h3><div id="kList"></div></div>
+      </div>
+
+      <!-- CONFIG -->
+      <div class="pview" id="v-cfg">
+        <div class="row2">
+          <div class="panel-card"><h3>Seus dados e links</h3><div class="desc">Tudo que aparece na vitrine pública.</div>
+            <div class="frm">
+              <label>Nome exibido<input id="cfgName"></label>
+              <label>WhatsApp (DDD+número, só dígitos)<input id="cfgWa" placeholder="12999990000"></label>
+              <label>Link Natura<input id="cfgNat"></label>
+              <label>Link Boticário<input id="cfgBot"></label>
+              <label>Instagram<input id="cfgIg"></label>
+              <label>Cidade<input id="cfgCity"></label>
+              <label>Mensagem de boas-vindas do WhatsApp<textarea id="cfgWaMsg"></textarea></label>
+              <button class="btn btn-primary" id="cfgSave">Salvar</button>
+            </div>
+          </div>
+          <div class="panel-card"><h3>Inteligência artificial <span class="tag plum">área técnica · Wellington</span></h3><div class="desc">Já vem configurada pelo Wellington. Você não precisa mexer aqui.</div>
+            <div class="frm">
+              <label>Provedor<select id="aiProv"><option value="local">Motor local (sem chave, sempre funciona)</option><option value="gemini">Google Gemini (grátis — aistudio.google.com)</option><option value="groq">Groq (grátis — console.groq.com)</option><option value="openai_compat">Outro compatível OpenAI</option></select></label>
+              <label>Chave da API<input id="aiKey" type="password" placeholder="cole aqui"></label>
+              <div id="aiExtra" class="hide"><label>URL base (OpenAI-compatível)<input id="aiUrl" placeholder="https://.../v1/chat/completions"></label><label>Modelo<input id="aiModel" placeholder="nome do modelo"></label></div>
+              <div class="toolbar"><button class="btn btn-primary btn-sm" id="aiSave">Salvar</button><button class="btn btn-ghost btn-sm" id="aiTest">Testar conexão</button></div>
+              <div id="aiStatus" style="font-size:13px"></div>
+            </div>
+            <div class="note">Se algo aqui for alterado sem querer, chame o Wellington no WhatsApp: ele reconfigura em 1 minuto.</div>
+          </div>
+        </div>
+        <div class="panel-card"><h3>Segurança e dados</h3><div class="frm"><div class="row3"><label>Novo PIN (4 dígitos)<input id="cfgPin" maxlength="4" inputmode="numeric"></label><button class="btn btn-ghost" id="pinSave" style="align-self:end">Trocar PIN</button><button class="btn btn-ghost" id="bkExport" style="align-self:end">Backup (baixar)</button></div><div class="row2"><label>Restaurar backup<input type="file" id="bkImport" accept=".json"></label><button class="btn btn-ghost" id="dataReset" style="align-self:end;color:var(--bad)">Zerar estatísticas</button></div></div></div>
+      </div>
+
+      <!-- UPGRADES -->
+      <div class="pview" id="v-up">
+        <div class="sec-head" style="margin-bottom:20px"><span class="kicker">Caminho de crescimento</span><h2 style="font-size:32px;color:var(--plum)">Você está no Nível 1. Quer mais resultado?</h2><p>Os próximos níveis são feitos pelo Wellington para você: é só pedir ao Wellington. Você não precisa mexer em nada — ele entrega pronto e funcionando.</p></div>
+        <div class="grid3" id="tiers"></div>
+        <div class="panel-card" style="margin-top:16px"><h3>Como pedir o próximo nível</h3><div class="desc">Toque no botão, diga qual nível quer e o Wellington cuida de tudo. Seu app continua no ar durante a evolução.</div><div class="toolbar"><a class="btn btn-wa" href="https://wa.me/5562982819669?text=Oi%20Wellington!%20Quero%20pedir%20o%20N%C3%ADvel%202%20(M%C3%A1quina%20de%20Vendas)%20do%20meu%20app%20de%20perfumaria." target="_blank" rel="noopener">Pedir o Nível 2 · R$ 1.200</a><a class="btn btn-primary" href="https://wa.me/5562982819669?text=Oi%20Wellington!%20Quero%20pedir%20o%20N%C3%ADvel%203%20(Vendedora%20Aut%C3%B4noma)%20do%20meu%20app%20de%20perfumaria." target="_blank" rel="noopener">Pedir o Nível 3 · R$ 1.500</a></div></div>
+      </div>
+    </main>
+  </div>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script>
+/* ======================= DADOS ======================= */
+/* >>> WELLINGTON: cole aqui a chave gratuita (Gemini ou Groq) ANTES de publicar. A Bruna não precisa mexer em nada. <<< */
+const DEV_AI = { prov:'local', key:'' };   // ex.: { prov:'gemini', key:'AIza...' }  ou  { prov:'groq', key:'gsk_...' }
+const DEFAULT_CFG = {
+  name:'Bruna Amaral', city:'São José dos Campos/SP', wa:'', pin:'1234',
+  natura:'https://www.minhaloja.natura.com/consultoria/brunadoamaralteodoro',
+  boticario:'https://minhaloja.grupoboticario.com.br/loja-brunadoamaralteodoro-17809005',
+  instagram:'https://www.instagram.com/bruninhagb16',
+  waMsg:'Oi Bruna! Vi sua vitrine de perfumes e quero uma ajuda para escolher 😊',
+  ai:{prov:DEV_AI.prov,key:DEV_AI.key,url:'',model:''}
+};
+const S = {
+  get cfg(){ try{ return Object.assign({}, DEFAULT_CFG, JSON.parse(localStorage.getItem('bp_cfg')||'{}')) }catch(e){ return {...DEFAULT_CFG} } },
+  set cfg(v){ localStorage.setItem('bp_cfg', JSON.stringify(v)) },
+  get(k,d){ try{ const v=JSON.parse(localStorage.getItem('bp_'+k)); return v==null?d:v }catch(e){ return d } },
+  set(k,v){ localStorage.setItem('bp_'+k, JSON.stringify(v)) }
+};
+
+// Catálogo curado: famílias olfativas e perfis (sem preços — preços no site oficial)
+const CAT = [
+ {b:'natura',n:'Kaiak Clássico',g:'masc',f:'fresco',em:'🌊',d:'O masculino mais vendido do Brasil. Fresco, limpo, aquático. Dia a dia e trabalho.',notes:'cítrico · marinho · amadeirado leve',tags:['dia','trabalho','jovem','presente']},
+ {b:'natura',n:'Kaiak Aventura',g:'masc',f:'fresco',em:'🏔️',d:'Versão mais intensa e aromática do Kaiak. Para quem gosta de frescor com presença.',notes:'bergamota · gengibre · vetiver',tags:['dia','esporte','presente']},
+ {b:'natura',n:'Essencial Exclusivo Masculino',g:'masc',f:'amadeirado',em:'🪵',d:'Sofisticado e marcante. Para ocasiões especiais e noite. Um dos presentes mais seguros.',notes:'madeiras nobres · âmbar · especiarias',tags:['noite','presente','luxo','maduro']},
+ {b:'natura',n:'Essencial Exclusivo Feminino',g:'fem',f:'floral',em:'🌸',d:'Floral elegante com fundo amadeirado. A assinatura de quem quer ser lembrada.',notes:'flores brancas · priprioca · madeiras',tags:['noite','presente','luxo','maduro']},
+ {b:'natura',n:'Essencial Oud',g:'uni',f:'oriental',em:'🕯️',d:'Intenso, quente, luxuoso. Para quem ama perfumes marcantes e duradouros.',notes:'oud · incenso · âmbar',tags:['noite','luxo','inverno']},
+ {b:'natura',n:'Luna',g:'fem',f:'floral',em:'🌙',d:'Floral doce e misterioso. Feminino, sedutor, ótimo para a noite.',notes:'jasmim · frutas · âmbar',tags:['noite','jovem','presente']},
+ {b:'natura',n:'Ilía',g:'fem',f:'floral',em:'💐',d:'Floral luminoso e moderno. Para o dia a dia com elegância.',notes:'flor de laranjeira · baunilha · madeiras',tags:['dia','trabalho','presente']},
+ {b:'natura',n:'Humor Meu Primeiro Humor',g:'fem',f:'doce',em:'🍬',d:'Doce, alegre e jovem. Um dos femininos mais queridos da Natura.',notes:'frutas · caramelo · baunilha',tags:['dia','jovem','presente']},
+ {b:'natura',n:'Humor Próprio Masculino',g:'masc',f:'fresco',em:'😎',d:'Descontraído e fresco, com toque doce. Para o dia, informal.',notes:'cítrico · lavanda · fava tonka',tags:['dia','jovem']},
+ {b:'natura',n:'Ekos Castanha / Frescor',g:'uni',f:'fresco',em:'🌿',d:'Frescor da floresta brasileira. Leve, natural, combina com a rotina.',notes:'castanha · notas verdes · cítricos',tags:['dia','verão','natural']},
+ {b:'natura',n:'Biografia Feminino',g:'fem',f:'amadeirado',em:'📖',d:'Amadeirado feminino, forte e sofisticado. Para quem tem personalidade.',notes:'especiarias · cedro · âmbar',tags:['noite','maduro','luxo']},
+ {b:'natura',n:'Homem Essence',g:'masc',f:'amadeirado',em:'🧔',d:'Amadeirado masculino elegante e versátil. Vai do trabalho ao jantar.',notes:'couro · madeiras · especiarias',tags:['noite','trabalho','maduro','presente']},
+ {b:'natura',n:'Kriska',g:'fem',f:'doce',em:'🍓',d:'Frutal doce, super jovem e divertido. Ótimo preço para presentear.',notes:'frutas vermelhas · flores · baunilha',tags:['dia','jovem','presente']},
+ {b:'boticario',n:'Malbec',g:'masc',f:'amadeirado',em:'🍷',d:'O ícone masculino do Boticário. Amadeirado quente, marcante. Presente certeiro.',notes:'madeiras · âmbar · toque de vinho',tags:['noite','presente','maduro','luxo']},
+ {b:'boticario',n:'Malbec Gold',g:'masc',f:'oriental',em:'🥃',d:'Mais intenso e dourado. Para ocasiões especiais.',notes:'especiarias · âmbar · madeiras',tags:['noite','luxo','presente']},
+ {b:'boticario',n:'Lily',g:'fem',f:'floral',em:'🤍',d:'O feminino mais desejado. Floral sofisticado, perfeito para presentear.',notes:'lírio · flores brancas · âmbar',tags:['noite','presente','luxo','maduro']},
+ {b:'boticario',n:'Lily Absolu',g:'fem',f:'oriental',em:'✨',d:'A versão mais intensa e luxuosa do Lily.',notes:'lírio · baunilha · madeiras',tags:['noite','luxo','inverno']},
+ {b:'boticario',n:'Egeo Dolce',g:'fem',f:'doce',em:'🍰',d:'Doce, gourmand e divertido. Queridinho das jovens.',notes:'marshmallow · caramelo · baunilha',tags:['dia','jovem','presente']},
+ {b:'boticario',n:'Egeo Blue',g:'masc',f:'fresco',em:'💙',d:'Fresco e moderno, ótimo custo-benefício para o dia.',notes:'cítrico · gengibre · musk',tags:['dia','jovem','esporte']},
+ {b:'boticario',n:'Coffee Woman',g:'fem',f:'doce',em:'☕',d:'Doce com café: quente, marcante e viciante.',notes:'café · caramelo · baunilha',tags:['noite','inverno','presente']},
+ {b:'boticario',n:'Coffee Man',g:'masc',f:'oriental',em:'☕',d:'Café, especiarias e madeiras. Masculino sedutor para a noite.',notes:'café · cardamomo · cedro',tags:['noite','inverno','presente']},
+ {b:'boticario',n:'Floratta Rose / Blue',g:'fem',f:'floral',em:'🌹',d:'Floral romântico e leve. Clássico para o dia.',notes:'rosa · frutas · musk',tags:['dia','presente','romântico']},
+ {b:'boticario',n:'Quasar',g:'masc',f:'fresco',em:'🚀',d:'Fresco e esportivo. Preço acessível e muito presenteável.',notes:'cítrico · aromático · amadeirado',tags:['dia','esporte','jovem']},
+ {b:'boticario',n:'Glamour',g:'fem',f:'floral',em:'💃',d:'Floral frutal alegre e sofisticado.',notes:'frutas · flores · âmbar',tags:['dia','noite','presente']},
+ {b:'boticario',n:'Arbo',g:'masc',f:'fresco',em:'🌲',d:'Verde, amadeirado fresco. Natural e versátil.',notes:'notas verdes · cedro · vetiver',tags:['dia','natural','verão']},
+ {b:'boticario',n:'Zaad',g:'masc',f:'amadeirado',em:'🏛️',d:'Amadeirado clássico e elegante, com aura de luxo.',notes:'madeiras · especiarias · âmbar',tags:['noite','luxo','maduro']},
+ {b:'boticario',n:'Liz',g:'fem',f:'floral',em:'🌼',d:'Floral delicado e feminino. Ótimo para o dia.',notes:'flores · frutas · musk',tags:['dia','jovem','presente']},
+ {b:'boticario',n:'Cuide-se Bem (body splash)',g:'fem',f:'doce',em:'🧴',d:'Body splash doce e perfumado, preço acessível. Entrada perfeita.',notes:'frutas · baunilha',tags:['dia','jovem','presente','acessível']},
+];
+const FAM = {fresco:'Fresco / cítrico',floral:'Floral',doce:'Doce / gourmand',amadeirado:'Amadeirado',oriental:'Oriental / intenso'};
+const DEFAULT_KITS = [
+ {name:'Pacote Natura · Presente Certeiro',brand:'natura',occ:'Presente',items:['Essencial Exclusivo (masc ou fem) 100ml','Hidratante Tododia','Sabonetes Ekos (embalagem presente)'],why:'Perfume de assinatura + cuidado diário. Vira presente completo, com cara de caixa de luxo.'},
+ {name:'Pacote Natura · Dia a Dia Fresco',brand:'natura',occ:'Uso diário',items:['Kaiak Clássico 100ml','Desodorante Kaiak','Humor Próprio (opcional)'],why:'Frescor que dura o dia inteiro e combina perfeitamente entre si.'},
+ {name:'Combo Boticário · Noite Marcante',brand:'boticario',occ:'Noite / encontro',items:['Malbec 100ml','Lily 75ml','Body cream Lily'],why:'O casal mais vendido do Boticário. Ideal para presentear os dois.'},
+ {name:'Combo Boticário · Doce Jovem',brand:'boticario',occ:'Presente jovem',items:['Egeo Dolce','Cuide-se Bem Body Splash','Hidratante Cuide-se Bem'],why:'Doce, divertido e com ótimo preço. Presente que agrada adolescentes e jovens.'},
+ {name:'Pacote Natura · Mãe Especial',brand:'natura',occ:'Dia das Mães / aniversário',items:['Ilía ou Luna 75ml','Creme para as mãos Tododia','Óleo trifásico Ekos'],why:'Elegante e carinhoso: perfume + ritual de autocuidado.'},
+ {name:'Combo Boticário · Natal em Família',brand:'boticario',occ:'Natal',items:['Quasar (ele)','Floratta (ela)','Cuide-se Bem (filhos)'],why:'Um presente para cada um com um só carrinho e um só frete.'}
+];
+
+/* ======================= UTIL ======================= */
+const $=s=>document.querySelector(s), $$=s=>[...document.querySelectorAll(s)];
+function toast(t){const e=$('#toast');e.textContent=t;e.classList.add('show');clearTimeout(e._t);e._t=setTimeout(()=>e.classList.remove('show'),2200)}
+function copy(t){navigator.clipboard?.writeText(t).then(()=>toast('Copiado ✓')).catch(()=>toast('Selecione e copie'))}
+function esc(s){return String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]))}
+function link(dest,src,camp){const c=S.cfg;let base=dest==='natura'?c.natura:dest==='boticario'?c.boticario:dest==='instagram'?c.instagram:location.origin+location.pathname;if(dest==='instagram'||!src)return base;const u=new URL(base);u.searchParams.set('utm_source',src);u.searchParams.set('utm_medium','consultora');u.searchParams.set('utm_campaign',camp||'bruna');return u.toString()}
+function waLink(phone,msg){const p=(phone||'').replace(/\D/g,'');if(!p)return null;const n=p.startsWith('55')?p:'55'+p;return 'https://wa.me/'+n+(msg?'?text='+encodeURIComponent(msg):'')}
+function track(ev,meta){const e=S.get('events',[]);e.unshift({t:Date.now(),ev,meta:meta||''});S.set('events',e.slice(0,200));const c=S.get('counts',{});c[ev]=(c[ev]||0)+1;S.set('counts',c)}
+function fmtDate(t){return new Date(t).toLocaleString('pt-BR',{day:'2-digit',month:'2-digit',hour:'2-digit',minute:'2-digit'})}
+const OUTS=[];
+function outBlock(title,text){const id=OUTS.push(text)-1;return `<div class="out"><b style="display:block;margin-bottom:6px;color:var(--plum)">${esc(title)}</b>${esc(text)}<button class="btn btn-ghost btn-xs cp" onclick="copy(OUTS[${id}])">Copiar</button></div>`}
+
+/* ======================= IA ======================= */
+const SYS = ()=>`Você é "Bru", consultora virtual de perfumes de ${S.cfg.name}, revendedora digital oficial da Natura e do Grupo Boticário em ${S.cfg.city}, com envio para todo o Brasil.
+REGRAS DO MODELO DE VENDA (nunca contradiga): o cliente NÃO compra pelo WhatsApp e não há entrega em mãos. O cliente clica no link oficial, é levado ao site/app oficial da marca, escolhe, paga (Pix/cartão) direto para a marca, e a própria marca entrega na casa dele em qualquer cidade do Brasil, com nota fiscal, rastreio e garantia. A consultora recebe comissão automaticamente.
+Links oficiais: Natura ${S.cfg.natura} | Boticário ${S.cfg.boticario} | Instagram ${S.cfg.instagram}.
+Catálogo de referência (marca · nome · família · notas): ${CAT.map(p=>`${p.b==='natura'?'Natura':'Boticário'} · ${p.n} · ${FAM[p.f]} · ${p.notes}`).join(' | ')}.
+Responda SEMPRE em português do Brasil, de forma calorosa, direta, com no máximo 120 palavras quando for chat. Nunca invente preços: diga que o preço do dia está no site oficial. Nunca prometa cupons que não existem. Sempre termine indicando o link oficial da marca certa.`;
+
+async function aiCall(messages,opts={}){
+  const ai=S.cfg.ai||{};
+  if(ai.prov==='local'||!ai.key) throw new Error('local');
+  const sys=messages.find(m=>m.role==='system')?.content||SYS();
+  const chat=messages.filter(m=>m.role!=='system');
+  if(ai.prov==='gemini'){
+    const model=ai.model||'gemini-2.5-flash';
+    const r=await fetch(`https://generativelanguage.googleapis.com/v1beta/models/${model}:generateContent?key=${encodeURIComponent(ai.key)}`,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({system_instruction:{parts:[{text:sys}]},contents:chat.map(m=>({role:m.role==='assistant'?'model':'user',parts:[{text:m.content}]})),generationConfig:{temperature:opts.temp??0.8,maxOutputTokens:opts.max||900}})});
+    if(!r.ok) throw new Error('Gemini '+r.status+': '+(await r.text()).slice(0,200));
+    const j=await r.json();return j.candidates?.[0]?.content?.parts?.map(p=>p.text).join('')||'';
+  }
+  const url=ai.prov==='groq'?'https://api.groq.com/openai/v1/chat/completions':ai.url;
+  const model=ai.prov==='groq'?(ai.model||'llama-3.3-70b-versatile'):ai.model;
+  const r=await fetch(url,{method:'POST',headers:{'Content-Type':'application/json','Authorization':'Bearer '+ai.key},body:JSON.stringify({model,messages:[{role:'system',content:sys},...chat],temperature:opts.temp??0.8,max_tokens:opts.max||900})});
+  if(!r.ok) throw new Error('API '+r.status+': '+(await r.text()).slice(0,200));
+  const j=await r.json();return j.choices?.[0]?.message?.content||'';
+}
+function aiOn(){const a=S.cfg.ai||{};return a.prov!=='local'&&!!a.key}
+
+/* ---- Motor local (sempre funciona) ---- */
+const pick=a=>a[Math.floor(Math.random()*a.length)];
+function brandName(b){return b==='natura'?'Natura':b==='boticario'?'O Boticário':'Natura e O Boticário'}
+function brandLink(b){const c=S.cfg;return b==='natura'?c.natura:b==='boticario'?c.boticario:`Natura: ${c.natura}\nBoticário: ${c.boticario}`}
+function localAds(o){
+  const B=brandName(o.brand), L=brandLink(o.brand), prod=o.prod?` ${o.prod}`:'', urg=/urg|promo|black/i.test(o.tone+o.goal);
+  const hooks=[`Procurando perfume${prod}? Pare de rolar a tela.`,`O perfume que você está pesquisando está a um clique.`,`Perfume original${prod} da ${B}, no site oficial, na sua casa.`,`Chega de medo de comprar perfume pela internet.`,`Presente que chega embalado e com garantia: ${B}.`];
+  const body=[`Clique no link, escolha no site oficial da ${B}, pague por Pix ou cartão direto para a marca e receba em casa — em qualquer cidade do Brasil. Nota fiscal, rastreio e garantia oficial.`,`Sem intermediário: a compra é feita no site oficial da ${B}. A marca separa, embala e envia para a sua porta. Eu só indico o caminho certo (e te ajudo a escolher, se quiser).`,`Mesmo preço do site, com uma consultora de verdade para tirar dúvida. Entrega para todo o Brasil pela própria ${B}.`];
+  const cta=urg?['Toque em "Saiba mais" e garanta antes que acabe 👇','Oferta no site oficial por tempo limitado — entre pelo link 👇']:['Toque em "Saiba mais" e escolha o seu 👇','Entre pelo link e veja os preços do dia no site oficial 👇'];
+  const tags='#perfume #perfumaria #'+(o.brand==='ambas'?'natura #boticario':o.brand)+' #presente #entregaparatodoobrasil';
+  const v=[];
+  for(let i=0;i<3;i++){
+    const h=hooks[i%hooks.length], b=body[i%body.length], c=cta[i%cta.length];
+    switch(o.plat){
+      case 'Meta Ads (Instagram/Facebook)': v.push(`TEXTO PRINCIPAL:\n${h}\n\n${b}\n\n✅ Compra 100% segura no site oficial\n✅ Pix ou cartão\n✅ Entrega para todo o Brasil\n\n${c}\n\nTÍTULO: ${pick(['Perfume original, entrega em casa','Compre no site oficial. Receba em casa.','Seu perfume, no preço oficial'])}\nDESCRIÇÃO: Escolha, pague na marca e receba em qualquer cidade.\nCTA: Saiba mais\n\n🔗 COLE SEU LINK AQUI (campo "URL do site"): ${L}`);break;
+      case 'Legenda Instagram': v.push(`${h} ✨\n\n${b}\n\n${o.notes?'📍 '+o.notes+'\n':''}💜 Me chama na DM se quiser ajuda para escolher.\n\n👉 Link na bio: ${L}\n\n${tags}`);break;
+      case 'Story (sequência de 3 telas)': v.push(`TELA 1 (gancho, 3s): "${h}"\n→ fundo escuro, texto grande, enquete "Você compra perfume online? Sim / Tenho medo"\n\nTELA 2 (prova, 5s): "${b}"\n→ print da loja oficial da ${B} + seta\n\nTELA 3 (ação, 5s): "${c}"\n→ sticker de LINK apontando para: ${L}`);break;
+      case 'Mensagem de WhatsApp': v.push(`Oi, {nome}! Tudo bem? 😊\n\n${h}\n\n${b}\n\nSe quiser, me diz o estilo (fresco, doce, amadeirado) que eu te indico 2 opções. Ou já dá uma olhada aqui:\n${L}`);break;
+      case 'Status do WhatsApp': v.push(`${h}\n\n${b.split('.')[0]}.\n\n👉 ${L}\n(chama no privado que eu ajudo a escolher)`);break;
+      case 'Google Ads (títulos + descrições)': v.push(`TÍTULOS (até 30 caracteres):\n• Perfume ${B.split(' ').pop()} Original\n• Compre no Site Oficial\n• Entrega em Todo o Brasil\n• Pix ou Cartão, Seguro\n• Consultora Oficial\n\nDESCRIÇÕES (até 90):\n• Escolha no site oficial da ${B}, pague na marca e receba em casa com garantia.\n• Preço oficial, nota fiscal e rastreio. Consultoria para acertar na escolha.\n\nURL FINAL: ${L}`);break;
+      default: v.push(`ROTEIRO 30s\n[0-3s] (close no frasco) "${h}"\n[3-12s] (falando pra câmera) "${b}"\n[12-22s] (tela do site oficial) "Olha: eu abro o site da ${B}, escolho, pago no Pix e pronto. Chega em casa."\n[22-30s] "${c} O link tá na bio."\n\nLEGENDA: ${h} 👉 link na bio\n${tags}\nLINK: ${L}`);
+    }
+  }
+  return v;
+}
+function localFollow(c){
+  const first=c.name.split(' ')[0], L=/boticario|malbec|lily|egeo|coffee|floratta|quasar/i.test(c.int)?S.cfg.boticario:S.cfg.natura;
+  const m={
+    novo:[`Oi ${first}! Aqui é a ${S.cfg.name.split(' ')[0]} 😊 Vi que você se interessou por ${c.int||'perfumes'}. Quer que eu te indique 2 opções com a sua cara? É rapidinho: me diz se prefere algo fresco, doce ou amadeirado.`,`${first}, separei aqui o que mais combina com ${c.int||'o que você procura'}. Você escolhe no site oficial, paga por Pix ou cartão e recebe em casa com garantia: ${L}`],
+    quente:[`${first}, só passando para lembrar: o ${c.int||'perfume'} que você gostou está no site oficial, e a entrega é para qualquer cidade. Qualquer dúvida sobre fixação ou tamanho, me pergunta! ${L}`,`Oi ${first}! Ficou alguma dúvida sobre ${c.int||'o perfume'}? Posso te ajudar a comparar com outra opção antes de você decidir 💜`],
+    comprou:[`${first}, chegou seu pedido? 🥰 Espero que tenha amado! Se quiser, me conta o que achou da fixação — e se precisar de qualquer coisa com a troca/garantia, eu te oriento.`,`Oi ${first}! Lembrei de você: saiu novidade na linha que você comprou. Quer que eu te mostre? Sem compromisso 😉`],
+    vip:[`${first}, você é das minhas clientes especiais 💜 Vou te avisar em primeira mão das promoções no site oficial. Alguma data de presente chegando (aniversário, Natal)? Já deixo tudo separado.`,`Oi ${first}! Tem um lançamento que é a sua cara. Olha no site oficial e me diz o que achou: ${L}`],
+    frio:[`Oi ${first}, sumida(o)! 😊 Montei novas combinações de perfumes para presente, com entrega para todo o Brasil pela própria marca. Se quiser dar uma olhada: ${L}`,`${first}, lembra que você queria ${c.int||'um perfume novo'}? Estão rolando ofertas no site oficial. Entra pelo meu link e aproveita com segurança: ${L}`]
+  };
+  return m[c.status]||m.novo;
+}
+function localQuizText(prof){
+  const fam=FAM[prof.fam], tone=prof.tone, lines={
+    fresco:`Você gosta de se sentir limpo(a), leve e energizado(a). Perfumes frescos combinam com a sua rotina e não enjoam.`,
+    floral:`Você tem um lado delicado e elegante. Florais transmitem feminilidade e sofisticação sem exagero.`,
+    doce:`Você é afetuoso(a) e marcante. Doces/gourmand deixam um rastro inesquecível e viciante.`,
+    amadeirado:`Você tem personalidade forte e gosto refinado. Amadeirados passam segurança e maturidade.`,
+    oriental:`Você ama intensidade. Orientais são quentes, luxuosos e feitos para ser lembrados.`};
+  return `Seu perfil olfativo: ${fam}. ${lines[prof.fam]} Para ${prof.when==='noite'?'a noite':'o dia a dia'} e ${prof.gift?'para presentear':'para uso próprio'}, as opções abaixo são as mais certeiras. Os preços do dia estão no site oficial — é só tocar em "Ver na loja".`;
+}
+function localChat(q){
+  const t=q.toLowerCase(), c=S.cfg;
+  const find=(fam,g)=>CAT.filter(p=>(!fam||p.f===fam)&&(!g||p.g===g||p.g==='uni')).slice(0,3);
+  let fam=null,g=null;
+  if(/doce|gourmand|baunilha|caramelo/.test(t))fam='doce';else if(/fresc|cítric|citric|leve|verão|verao|esport/.test(t))fam='fresco';else if(/amadeir|madeira|forte|marcante/.test(t))fam='amadeirado';else if(/floral|flor|rom[âa]nt/.test(t))fam='floral';else if(/intens|oriental|oud|quente|inverno/.test(t))fam='oriental';
+  if(/mascul|homem|ele|namorado|marido|pai\b/.test(t))g='masc';else if(/femin|mulher|ela|namorada|esposa|m[ãa]e/.test(t))g='fem';
+  if(/pre[çc]o|quanto|valor|custa/.test(t))return `Os preços e promoções do dia ficam no site oficial da marca (eu não vendo por fora, por isso é 100% seguro). Dá uma olhada:\nNatura: ${c.natura}\nBoticário: ${c.boticario}\nMe diz o estilo que você gosta e eu te indico opções certeiras!`;
+  if(/entreg|frete|prazo|cidade|brasil/.test(t))return `A entrega é feita pela própria marca para qualquer cidade do Brasil, com rastreio e nota fiscal. O frete e o prazo aparecem no carrinho antes de você pagar. Quer que eu te indique um perfume?`;
+  if(/pagar|pix|cart[ãa]o|seguro|confi/.test(t))return `Você paga direto para a Natura ou para o Boticário, no site oficial, por Pix ou cartão. Eu não recebo nada por fora — só a comissão automática por ter indicado. É o jeito mais seguro de comprar perfume online. Me conta: é para você ou para presente?`;
+  if(/presente|natal|anivers|namorad|m[ãa]es|pais/.test(t)&&!fam){const l=find(null,g).map(p=>`• ${p.n} (${brandName(p.b)}) — ${p.d.split('.')[0]}.`).join('\n');return `Para presente, as apostas mais seguras são:\n${l}\nQuer que eu refine? Me diz: a pessoa prefere algo fresco, doce ou marcante?`}
+  if(fam||g){const l=find(fam,g).map(p=>`• ${p.n} (${brandName(p.b)}) — ${p.notes}.`).join('\n');return `Boa! Pelo que você descreveu, eu iria de:\n${l}\nTodos com compra no site oficial e entrega em casa. Quer o link da ${g==='masc'?'linha masculina':'loja'}? Natura: ${c.natura} | Boticário: ${c.boticario}`}
+  return pick([`Adoro ajudar a escolher! Me conta rapidinho: é para você ou para presente, e você prefere algo fresco, doce, floral ou amadeirado?`,`Me dá 2 pistas: para quem é o perfume e em que momento vai usar (dia a dia ou noite)? Com isso eu indico 3 opções certeiras.`,`Posso te ajudar com Natura ou Boticário. Me diz o estilo (fresco, doce, amadeirado, floral) que eu mostro as melhores opções e o link oficial.`]);
+}
+
+/* ======================= ROTEAMENTO ======================= */
+function route(){const h=location.hash||'#/';const panel=h.startsWith('#/painel');$('#site').style.display=panel?'none':'block';$('#panel').style.display=panel?'block':'none';if(panel)initPanel();else window.scrollTo(0,0)}
+window.addEventListener('hashchange',route);
+
+/* ======================= VITRINE ======================= */
+function renderLinks(){const c=S.cfg;$$('[data-link]').forEach(a=>{a.href=link(a.dataset.link)});const w=waLink(c.wa,c.waMsg);const f=$('#fabWa');if(w){f.href=w;f.style.display='grid'}else f.style.display='none'}
+document.addEventListener('click',e=>{const a=e.target.closest('[data-track]');if(a&&!location.hash.startsWith('#/painel'))track('click_'+a.dataset.track)});
+
+// Quiz
+const QZ=[
+ {q:'Esse perfume é para quem?',k:'who',o:[['👩','Para mim (mulher)','fem'],['👨','Para mim (homem)','masc'],['🎁','Presente para ela','fem_g'],['🎁','Presente para ele','masc_g']]},
+ {q:'Quando vai usar mais?',k:'when',o:[['☀️','Dia a dia / trabalho','dia'],['🌙','Noite / encontros','noite'],['🏃','Esporte e calor','esporte'],['🎉','Ocasiões especiais','especial']]},
+ {q:'Qual cheiro te conquista?',k:'fam',o:[['🍋','Fresco, limpo, cítrico','fresco'],['🌸','Floral, delicado','floral'],['🍬','Doce, baunilha, caramelo','doce'],['🪵','Amadeirado, marcante','amadeirado'],['🔥','Intenso, quente, luxuoso','oriental'],['🤷','Não sei, me surpreenda','?']]},
+ {q:'Intensidade ideal?',k:'int',o:[['🌬️','Leve, discreto','leve'],['⚖️','Equilibrado','medio'],['💥','Forte, que marca presença','forte']]},
+ {q:'Você se descreve como...',k:'vibe',o:[['😎','Prático(a) e moderno(a)','mod'],['💃','Romântico(a) e elegante','rom'],['🧘','Natural e tranquilo(a)','nat'],['👑','Sofisticado(a) e marcante','lux']]},
+ {q:'Faixa de preço que faz sentido?',k:'price',o:[['💚','Mais acessível','baixo'],['💛','Intermediário','medio'],['💜','Premium / assinatura','alto']]}
+];
+let qi=0,qa={};
+function renderQuiz(){const box=$('#quizBox');if(qi>=QZ.length)return quizResult();const s=QZ[qi];box.innerHTML=`<div class="qprog"><i style="width:${qi/QZ.length*100}%"></i></div><div class="qq">${qi+1}. ${s.q}</div><div class="qopts">${s.o.map(o=>`<button class="qopt ${qa[s.k]===o[2]?'sel':''}" data-k="${s.k}" data-v="${o[2]}"><span class="em">${o[0]}</span>${o[1]}</button>`).join('')}</div><div class="qnav"><button class="btn btn-ghost btn-sm" id="qBack" ${qi===0?'disabled':''}>← Voltar</button><span style="font-size:12px;color:var(--mute);align-self:center">${qi+1} de ${QZ.length}</span></div>`;
+  $$('.qopt').forEach(b=>b.onclick=()=>{qa[b.dataset.k]=b.dataset.v;qi++;renderQuiz()});$('#qBack').onclick=()=>{qi=Math.max(0,qi-1);renderQuiz()}}
+function profile(){const g=qa.who.startsWith('fem')?'fem':'masc',gift=qa.who.endsWith('_g');let fam=qa.fam;if(fam==='?'){fam=qa.when==='noite'||qa.when==='especial'?(g==='fem'?'floral':'amadeirado'):'fresco';if(qa.vibe==='lux')fam='oriental';if(qa.vibe==='rom'&&g==='fem')fam='floral'}return {g,gift,fam,when:qa.when,int:qa.int,vibe:qa.vibe,price:qa.price}}
+function recommend(p){const when=p.when==='esporte'?'dia':p.when==='especial'?'noite':p.when;let list=CAT.filter(x=>x.g===p.g||x.g==='uni');const score=x=>{let s=0;if(x.f===p.fam)s+=5;if(x.tags.includes(when))s+=2;if(p.gift&&x.tags.includes('presente'))s+=2;if(p.vibe==='lux'&&x.tags.includes('luxo'))s+=2;if(p.vibe==='nat'&&x.tags.includes('natural'))s+=2;if(p.vibe==='mod'&&x.tags.includes('jovem'))s+=1;if(p.price==='baixo'&&(x.tags.includes('acessível')||x.tags.includes('jovem')))s+=2;if(p.price==='alto'&&x.tags.includes('luxo'))s+=2;if(p.int==='forte'&&(x.f==='oriental'||x.f==='amadeirado'))s+=1;if(p.int==='leve'&&x.f==='fresco')s+=1;return s+Math.random()*.5};list.sort((a,b)=>score(b)-score(a));const nat=list.filter(x=>x.b==='natura').slice(0,2),bot=list.filter(x=>x.b==='boticario').slice(0,2);return [...nat,...bot]}
+async function quizResult(){const p=profile(),recs=recommend(p),box=$('#quizBox');track('quiz_done',FAM[p.fam]);
+  box.innerHTML=`<div class="result-hero"><span class="kicker" style="color:var(--rose2)">Seu perfil olfativo</span><h3>${FAM[p.fam]} ${p.gift?'· presente':''}</h3><p id="qText" style="margin-top:6px;color:#E9D9EC">${esc(localQuizText(p))}</p></div><div id="recs">${recs.map(prodRow).join('')}</div><div class="qnav" style="margin-top:14px"><button class="btn btn-ghost btn-sm" id="qRedo">↺ Refazer</button><button class="btn btn-primary btn-sm" id="qChat">💬 Tirar dúvida com a Bru</button></div>`;
+  $('#qRedo').onclick=()=>{qi=0;qa={};renderQuiz()};$('#qChat').onclick=()=>{openChat();pushUser(`Fiz o quiz: perfil ${FAM[p.fam]}, ${p.g==='fem'?'feminino':'masculino'}, ${p.when}, ${p.gift?'para presente':'para mim'}. Qual dessas opções você escolheria?`)};
+  if(aiOn()){try{const t=await aiCall([{role:'system',content:SYS()},{role:'user',content:`Escreva em até 70 palavras, em 2ª pessoa, um texto caloroso explicando o perfil olfativo ${FAM[p.fam]} para ${p.g==='fem'?'uma mulher':'um homem'}, uso ${p.when}, intensidade ${p.int}, estilo ${p.vibe}, ${p.gift?'é presente':'uso próprio'}. Comente brevemente por que ${recs.map(r=>r.n).join(', ')} combinam. Sem links.`}],{max:300});if(t)$('#qText').textContent=t}catch(e){}}}
+function prodRow(p){return `<div class="prod"><div class="pic ${p.b==='boticario'?'b':''}">${p.em}</div><div style="flex:1"><span class="tag ${p.b==='natura'?'nat':'bot'}">${brandName(p.b)}</span><b>${p.n}</b><small>${p.notes}</small></div><a class="btn ${p.b==='natura'?'btn-nat':'btn-bot'} btn-sm" href="${link(p.b,'app','quiz')}" target="_blank" rel="noopener" data-track="${p.b}">Ver na loja</a></div>`}
+
+// Catálogo
+let catF='todos';
+function renderCat(){const q=($('#catSearch').value||'').toLowerCase();const chips=[['todos','Todos'],['natura','Natura'],['boticario','Boticário'],['fem','Feminino'],['masc','Masculino'],['presente','Presente'],['fresco','Fresco'],['doce','Doce'],['floral','Floral'],['amadeirado','Amadeirado'],['oriental','Intenso']];$('#catChips').innerHTML=chips.map(c=>`<button class="chip ${catF===c[0]?'on':''}" data-f="${c[0]}">${c[1]}</button>`).join('');$$('#catChips .chip').forEach(b=>b.onclick=()=>{catF=b.dataset.f;renderCat()});
+  const list=CAT.filter(p=>{const hay=(p.n+' '+p.d+' '+p.notes+' '+p.tags.join(' ')+' '+FAM[p.f]+' '+(p.g==='fem'?'feminino mulher':p.g==='masc'?'masculino homem':'unissex')).toLowerCase();if(q&&!hay.includes(q))return false;if(catF==='todos')return true;if(catF==='natura'||catF==='boticario')return p.b===catF;if(catF==='fem'||catF==='masc')return p.g===catF||p.g==='uni';if(catF==='presente')return p.tags.includes('presente');return p.f===catF});
+  $('#catGrid').innerHTML=list.map(p=>`<div class="pcard"><div class="top"><span class="big">${p.em}</span><span class="tag ${p.b==='natura'?'nat':'bot'}">${brandName(p.b)}</span></div><h4>${p.n}</h4><div class="notes">${p.notes}</div><p>${p.d}</p><div class="act"><a class="btn ${p.b==='natura'?'btn-nat':'btn-bot'} btn-sm" href="${link(p.b,'app','catalogo')}" target="_blank" rel="noopener" data-track="${p.b}">Ver na loja</a><button class="btn btn-ghost btn-sm" onclick="askAbout('${esc(p.n)}')">Dúvida</button></div></div>`).join('')||'<p style="text-align:center;color:var(--mute)">Nada encontrado. Tente "doce", "masculino", "presente"...</p>'}
+function askAbout(n){openChat();pushUser(`Me fala sobre o ${n}: para quem combina, fixação e se é bom para presente?`)}
+function renderKits(){const kits=S.get('kits',DEFAULT_KITS);$('#kitGrid').innerHTML=kits.map((k,i)=>`<div class="kit">${i===0?'<div class="ribbon">MAIS PEDIDO</div>':''}<span class="tag ${k.brand==='natura'?'nat':'bot'}">${brandName(k.brand)} · ${esc(k.occ)}</span><h3 style="margin-top:8px">${esc(k.name)}</h3><ul>${k.items.map(x=>`<li>${esc(x)}</li>`).join('')}</ul><p style="font-size:13px;color:var(--mute);margin-bottom:12px">${esc(k.why)}</p><a class="btn ${k.brand==='natura'?'btn-nat':'btn-bot'} btn-sm" href="${link(k.brand,'app','kit')}" target="_blank" rel="noopener" data-track="${k.brand}">Montar no site oficial →</a></div>`).join('')}
+
+// Promo countdown
+function nextPromo(){const n=new Date(),y=n.getFullYear();const list=[[new Date(y,10,27),'Black Friday Natura & Boticário','As melhores promoções do ano caem nos sites oficiais. Entre pelo meu link e aproveite com segurança.'],[new Date(y,11,20),'Natal: último dia para garantir a entrega','Presentes Natura e Boticário entregues antes do Natal. Compre no site oficial pelo meu link.'],[new Date(y+1,4,10),'Dia das Mães','O presente que toda mãe ama, entregue na casa dela em qualquer cidade.'],[new Date(y+1,5,12),'Dia dos Namorados','Perfume é o presente mais lembrado. Compre no site oficial e receba em casa.'],[new Date(y+1,7,9),'Dia dos Pais','Malbec, Kaiak, Essencial: presentes certeiros para ele.'],[new Date(y+1,10,27),'Black Friday Natura & Boticário','As melhores promoções do ano nos sites oficiais.']];return list.find(x=>x[0]>n)||list[0]}
+function countdown(){const [d,t,txt]=nextPromo();$('#promoTitle').textContent=t;$('#promoText').textContent=txt;const tick=()=>{let s=Math.max(0,(d-new Date())/1000);const dd=Math.floor(s/86400),hh=Math.floor(s%86400/3600),mm=Math.floor(s%3600/60),ss=Math.floor(s%60);$('#countdown').innerHTML=[[dd,'dias'],[hh,'horas'],[mm,'min'],[ss,'seg']].map(x=>`<div><b>${String(x[0]).padStart(2,'0')}</b><small>${x[1]}</small></div>`).join('')};tick();setInterval(tick,1000)}
+
+// Chat
+const hist=[];
+function openChat(){$('#chat').classList.add('open');if(!$('#msgs').children.length){pushBot(`Oi! Eu sou a Bru, consultora virtual da ${S.cfg.name.split(' ')[0]} 💜\nMe conta o que você procura que eu indico o perfume certo — e te mostro o link oficial para comprar com segurança e receber em casa.`);renderSugg(['Perfume para presente','Algo doce para a noite','Masculino fresco para o dia','Como funciona a compra?'])}}
+function renderSugg(a){$('#sugg').innerHTML=a.map(s=>`<button type="button">${s}</button>`).join('');$$('#sugg button').forEach(b=>b.onclick=()=>pushUser(b.textContent))}
+function addMsg(cls,html){const d=document.createElement('div');d.className='m '+cls;d.innerHTML=html;$('#msgs').appendChild(d);$('#msgs').scrollTop=1e9;return d}
+function linkify(t){return esc(t).replace(/(https?:\/\/[^\s)]+)/g,'<a href="$1" target="_blank" rel="noopener">$1</a>')}
+function pushBot(t){hist.push({role:'assistant',content:t});addMsg('bot',linkify(t))}
+async function pushUser(t){if(!t.trim())return;hist.push({role:'user',content:t});addMsg('user',esc(t));$('#chatIn').value='';$('#sugg').innerHTML='';track('chat_msg');const ty=addMsg('bot typing','<i></i><i></i><i></i>');let ans;try{if(!aiOn())throw 0;ans=await aiCall([{role:'system',content:SYS()},...hist.slice(-10)],{max:400})}catch(e){ans=localChat(t)}ty.remove();pushBot(ans);renderSugg(['Ver mais opções','Qual fixa mais?','Quero o link da Natura','Quero o link do Boticário'].slice(0,3))}
+function initSite(){renderLinks();renderQuiz();renderCat();renderKits();countdown();$('#catSearch').oninput=renderCat;$('#openChat').onclick=openChat;$('#closeChat').onclick=()=>$('#chat').classList.remove('open');$('#chatForm').onsubmit=e=>{e.preventDefault();pushUser($('#chatIn').value)}}
+
+/* ======================= PAINEL ======================= */
+let pInit=false,authed=false;
+function initPanel(){if(!pInit){pInit=true;bindPanel()}const c=S.cfg;if(c.pin==='1234'&&!S.get('pinSet',false)){$('#loginTitle').textContent='Bem-vinda, Bruna!';$('#loginText').textContent='Crie seu PIN de 4 dígitos para proteger sua central.'}if(authed){$('#plogin').classList.add('hide');$('#pshell').classList.remove('hide');refreshHome()}else{$('#plogin').classList.remove('hide');$('#pshell').classList.add('hide');$('.pin input').focus()}}
+function pinVal(){return $$('.pin input').map(i=>i.value).join('')}
+function bindPanel(){
+  $$('.pin input').forEach((i,idx,arr)=>{i.oninput=()=>{i.value=i.value.replace(/\D/g,'').slice(-1);if(i.value&&arr[idx+1])arr[idx+1].focus();if(pinVal().length===4)$('#loginBtn').click()};i.onkeydown=e=>{if(e.key==='Backspace'&&!i.value&&arr[idx-1])arr[idx-1].focus()}});
+  $('#loginBtn').onclick=()=>{const v=pinVal(),c=S.cfg;if(v.length<4)return toast('Digite 4 dígitos');if(c.pin==='1234'&&!S.get('pinSet',false)){c.pin=v;S.cfg=c;S.set('pinSet',true);toast('PIN criado ✓')}else if(v!==c.pin){$$('.pin input').forEach(i=>i.value='');$('.pin input').focus();return toast('PIN incorreto')}authed=true;initPanel()};
+  $('#logout').onclick=()=>{authed=false;$$('.pin input').forEach(i=>i.value='');location.hash='#/'};
+  $('#burger').onclick=()=>$('#pside').classList.toggle('open');
+  $$('#pnav [data-v]').forEach(b=>b.onclick=()=>showView(b.dataset.v));
+  // ads
+  $('#adGen').onclick=genAds;$('#adPreset').onclick=presetAds;
+  // links
+  $('#lkGen').onclick=()=>{const dest=$('#lkDest').value,src=$('#lkSrc').value,camp=($('#lkCamp').value||'bruna').toLowerCase().replace(/[^a-z0-9_]/g,'');const u=link(dest,src,camp);const l=S.get('links',[]);l.unshift({u,dest,src,camp,t:Date.now()});S.set('links',l.slice(0,50));$('#lkOut').innerHTML=`<div class="linkrow"><code>${esc(u)}</code><button class="btn btn-primary btn-xs" onclick="copy('${u}')">Copiar</button></div><div class="note">Natura e Boticário mostram no painel da consultora as vendas do link; a etiqueta UTM ajuda você a saber a origem quando usar ferramentas de análise.</div>`;renderLinkList();toast('Link gerado ✓')};
+  $('#qrSel').onchange=renderQR;$('#qrDl').onclick=()=>{const img=$('#qrBox img');if(!img)return;const a=document.createElement('a');a.href=img.src;a.download='qr-bruna.png';a.click()};
+  // crm
+  $('#cAdd').onclick=()=>{const n=$('#cName').value.trim();if(!n)return toast('Nome obrigatório');const l=S.get('crm',[]);l.unshift({id:Date.now(),name:n,phone:$('#cPhone').value.replace(/\D/g,''),status:$('#cStatus').value,int:$('#cInt').value.trim(),city:$('#cCity').value.trim(),last:null,created:Date.now()});S.set('crm',l);['#cName','#cPhone','#cInt','#cCity'].forEach(s=>$(s).value='');renderCRM();toast('Cliente salvo ✓')};
+  $('#cSearch').oninput=renderCRM;$('#cExport').onclick=()=>{const l=S.get('crm',[]);const csv='Nome;WhatsApp;Status;Interesse;Cidade;UltimoContato\n'+l.map(c=>[c.name,c.phone,c.status,c.int,c.city,c.last?fmtDate(c.last):''].map(x=>'"'+String(x||'').replace(/"/g,"'")+'"').join(';')).join('\n');dl('clientes-bruna.csv',csv,'text/csv')};
+  // insta
+  $('#igGo').onclick=igSearch;$('#hsSet').onchange=renderHash;$('#hsCopy').onclick=()=>copy(HASH[$('#hsSet').value].map(h=>'#'+h).join(' '));$('#bioGen').onclick=renderBio;
+  // cal
+  $('#calRegen').onclick=()=>{S.set('cal',null);renderCal()};$('#calCopy').onclick=()=>copy(S.get('cal',[]).map(d=>`${d.date} · ${d.fmt} · ${d.title}\n${d.hook}`).join('\n\n'));
+  // kits
+  $('#kAdd').onclick=()=>{const name=$('#kName').value.trim();if(!name)return toast('Dê um nome ao pacote');const k=S.get('kits',DEFAULT_KITS);k.unshift({name,brand:$('#kBrand').value,occ:$('#kOcc').value.trim()||'Presente',items:$('#kItems').value.split('\n').map(s=>s.trim()).filter(Boolean),why:$('#kWhy').value.trim()});S.set('kits',k);renderKitList();renderKits();['#kName','#kOcc','#kItems','#kWhy'].forEach(s=>$(s).value='');toast('Pacote publicado na vitrine ✓')};
+  // cfg
+  $('#cfgSave').onclick=()=>{const c=S.cfg;c.name=$('#cfgName').value.trim()||c.name;c.wa=$('#cfgWa').value.replace(/\D/g,'');c.natura=$('#cfgNat').value.trim()||c.natura;c.boticario=$('#cfgBot').value.trim()||c.boticario;c.instagram=$('#cfgIg').value.trim()||c.instagram;c.city=$('#cfgCity').value.trim()||c.city;c.waMsg=$('#cfgWaMsg').value;S.cfg=c;renderLinks();renderCat();renderKits();refreshHome();toast('Salvo ✓')};
+  $('#aiProv').onchange=()=>{$('#aiExtra').classList.toggle('hide',$('#aiProv').value!=='openai_compat')};
+  $('#aiSave').onclick=()=>{const c=S.cfg;c.ai={prov:$('#aiProv').value,key:$('#aiKey').value.trim(),url:$('#aiUrl').value.trim(),model:$('#aiModel').value.trim()};S.cfg=c;aiBadge();toast('IA salva ✓')};
+  $('#aiTest').onclick=async()=>{$('#aiSave').click();$('#aiStatus').innerHTML='<span class="spin" style="border-color:var(--plum3);border-right-color:transparent"></span> testando...';try{const t=await aiCall([{role:'system',content:SYS()},{role:'user',content:'Diga "conectado" e indique um perfume em 1 frase.'}],{max:60});$('#aiStatus').innerHTML='<b style="color:var(--ok)">✓ Conectado:</b> '+esc(t)}catch(e){$('#aiStatus').innerHTML='<b style="color:var(--bad)">✗ '+esc(e.message==='local'?'Selecione um provedor e cole a chave.':e.message)+'</b> O motor local continua funcionando.'}};
+  $('#pinSave').onclick=()=>{const v=$('#cfgPin').value.replace(/\D/g,'');if(v.length!==4)return toast('PIN precisa ter 4 dígitos');const c=S.cfg;c.pin=v;S.cfg=c;S.set('pinSet',true);$('#cfgPin').value='';toast('PIN alterado ✓')};
+  $('#bkExport').onclick=()=>{const all={};Object.keys(localStorage).filter(k=>k.startsWith('bp_')).forEach(k=>all[k]=localStorage.getItem(k));dl('backup-bruna-'+new Date().toISOString().slice(0,10)+'.json',JSON.stringify(all,null,2),'application/json')};
+  $('#bkImport').onchange=e=>{const f=e.target.files[0];if(!f)return;const r=new FileReader();r.onload=()=>{try{const o=JSON.parse(r.result);Object.keys(o).filter(k=>k.startsWith('bp_')).forEach(k=>localStorage.setItem(k,o[k]));toast('Backup restaurado ✓');location.reload()}catch(err){toast('Arquivo inválido')}};r.readAsText(f)};
+  $('#dataReset').onclick=()=>{if(confirm('Zerar cliques e eventos? (clientes e configurações ficam)')){S.set('events',[]);S.set('counts',{});refreshHome();toast('Estatísticas zeradas')}};
+  renderTiers();
+}
+function dl(name,content,type){const b=new Blob([content],{type});const a=document.createElement('a');a.href=URL.createObjectURL(b);a.download=name;a.click()}
+const TITLES={home:['Visão geral','Tudo que acontece na sua vitrine, em um lugar só.'],ads:['Anúncios com IA','Textos prontos para Meta Ads, Instagram, WhatsApp e Google.'],links:['Links rastreáveis & QR','Saiba de onde vem cada clique.'],crm:['Clientes & follow-up','Quem demonstrou interesse e o que mandar para cada um.'],insta:['Radar Instagram','Encontre clientes, concorrentes e tendências.'],cal:['Calendário de conteúdo','30 dias de posts planejados.'],kits:['Pacotes & kits','Combos que aparecem na sua vitrine.'],cfg:['Configurações & IA','Seus dados, links e inteligência artificial.'],up:['Evolução do app','Os próximos níveis da sua máquina de vendas.']};
+function showView(v){$$('.pview').forEach(x=>x.classList.toggle('on',x.id==='v-'+v));$$('#pnav [data-v]').forEach(b=>b.classList.toggle('on',b.dataset.v===v));$('#ptitle').textContent=TITLES[v][0];$('#psub').textContent=TITLES[v][1];$('#pside').classList.remove('open');({home:refreshHome,links:()=>{renderLinkList();renderQR()},crm:renderCRM,insta:()=>{renderHash();if(!$('#bioOut').children.length)renderBio()},cal:renderCal,kits:renderKitList,cfg:fillCfg})[v]?.()}
+function aiBadge(){const b=$('#aiBadge');const on=aiOn();b.textContent=on?'IA conectada · '+({gemini:'Gemini',groq:'Groq',openai_compat:'API'}[S.cfg.ai.prov]||'API'):'IA local';b.classList.toggle('on',on)}
+function refreshHome(){aiBadge();const c=S.get('counts',{}),crm=S.get('crm',[]);$('#stNat').textContent=(c.click_natura||0)+(c.click_promo_natura||0);$('#stBot').textContent=(c.click_boticario||0)+(c.click_promo_boticario||0);$('#stQuiz').textContent=c.quiz_done||0;$('#stLeads').textContent=crm.length;$('#stHot').textContent=crm.filter(x=>x.status==='quente').length+' quentes';
+  const ev=S.get('events',[]).slice(0,10);const lbl={click_natura:'🟠 Clique na loja Natura',click_boticario:'🟢 Clique na loja Boticário',click_promo_natura:'🟠 Clique em oferta Natura',click_promo_boticario:'🟢 Clique em oferta Boticário',click_instagram:'📸 Clique no Instagram',click_whatsapp:'💬 Clique no WhatsApp',quiz_done:'✨ Quiz concluído',chat_msg:'🤖 Mensagem na consultora virtual'};$('#events').innerHTML=ev.length?ev.map(e=>`<div><span style="color:var(--mute)">${fmtDate(e.t)}</span> · ${lbl[e.ev]||e.ev} ${e.meta?'<i style="color:var(--mute)">('+esc(e.meta)+')</i>':''}</div>`).join(''):'<i style="color:var(--mute)">Ainda sem eventos. Compartilhe sua vitrine!</i>';
+  const hot=crm.filter(x=>x.status==='quente'||x.status==='novo').slice(0,3);const [d,t]=nextPromo();const days=Math.ceil((d-new Date())/864e5);$('#todayPlan').innerHTML=`<ol style="padding-left:18px;font-size:14px;display:grid;gap:6px"><li>Postar 1 story com produto + sticker de link (use a aba <b>Anúncios</b> → Story).</li><li>${hot.length?`Mandar follow-up para: ${hot.map(x=>'<b>'+esc(x.name)+'</b>').join(', ')} (aba <b>Clientes</b>).`:'Cadastrar 3 pessoas que perguntaram sobre perfume esta semana (aba <b>Clientes</b>).'}</li><li>Comentar em 10 posts de perfis-alvo (aba <b>Radar Instagram</b>).</li><li><b>${t}</b> em ${days} dias: comece a aquecer o público hoje.</li></ol>`;
+  const cf=S.cfg;$('#homeLinks').innerHTML=[['Vitrine (este app)',location.origin+location.pathname],['Loja Natura',cf.natura],['Vitrine Boticário',cf.boticario],['Instagram',cf.instagram]].map(x=>`<div class="linkrow"><b style="font-size:12px;min-width:120px">${x[0]}</b><code>${esc(x[1])}</code><button class="btn btn-ghost btn-xs" onclick="copy('${x[1]}')">Copiar</button></div>`).join('')}
+
+// Ads
+async function genAds(){const o={plat:$('#adPlat').value,brand:$('#adBrand').value,goal:$('#adGoal').value,prod:$('#adProd').value.trim(),tone:$('#adTone').value,notes:$('#adNotes').value.trim()};const btn=$('#adGen');btn.innerHTML='<span class="spin"></span> gerando...';btn.disabled=true;let v;
+  try{if(!aiOn())throw 0;const t=await aiCall([{role:'system',content:SYS()},{role:'user',content:`Crie 3 variações de "${o.plat}" para ${brandName(o.brand)}. Objetivo: ${o.goal}. ${o.prod?'Produto/linha: '+o.prod+'.':''} Tom: ${o.tone}. ${o.notes?'Observações: '+o.notes+'.':''} Cada variação precisa deixar claro: clica no link → compra no site oficial da marca → pagamento seguro (Pix/cartão) → recebe em casa → envio para todo o Brasil. Inclua uma linha "🔗 COLE SEU LINK AQUI: ${brandLink(o.brand).replace(/\n/g,' | ')}". Separe as variações com uma linha contendo apenas "===". Para Meta Ads inclua TEXTO PRINCIPAL, TÍTULO, DESCRIÇÃO e CTA. Para Google Ads, títulos ≤30 caracteres e descrições ≤90. Sem markdown.`}],{max:1400});v=t.split(/\n=+\n/).map(s=>s.trim()).filter(Boolean);if(v.length<2)throw 0}catch(e){v=localAds(o)}
+  $('#adOut').innerHTML=v.slice(0,3).map((t,i)=>outBlock(`Variação ${i+1} · ${o.plat}`,t)).join('');btn.innerHTML='✨ Gerar 3 variações';btn.disabled=false}
+function presetAds(){const c=S.cfg;const P=[
+`ANÚNCIO 1 — "Para quem já está pesquisando"
+TEXTO PRINCIPAL:
+Procurando perfume Natura ou Boticário na internet? Pare de rolar a tela: aqui você compra no SITE OFICIAL da marca, paga por Pix ou cartão direto para a Natura/Boticário e recebe em casa — em qualquer cidade do Brasil.
+✅ Produto original, com nota fiscal e garantia da marca
+✅ Pagamento 100% seguro no site oficial
+✅ Entrega rastreada para todo o Brasil
+Eu sou consultora oficial e te ajudo a escolher sem compromisso.
+Toque em "Saiba mais" e escolha o seu 👇
+TÍTULO: Compre no site oficial. Receba em casa.
+DESCRIÇÃO: Natura e Boticário originais, entrega em todo o Brasil.
+CTA: Saiba mais
+🔗 COLE SEU LINK AQUI (URL do site): ${c.natura}  |  ${c.boticario}`,
+`ANÚNCIO 2 — "Medo de comprar perfume online?"
+TEXTO PRINCIPAL:
+Medo de comprar perfume pela internet e cair em golpe? Então faça do jeito certo: pelo meu link você vai direto para o site oficial da Natura ou do Boticário. Lá você escolhe, coloca no carrinho e paga para a própria marca (Pix ou cartão).
+A marca separa, embala e envia para a sua casa, em qualquer lugar do Brasil, com rastreio. Eu só recebo a comissão por indicar — e te ajudo a acertar na escolha.
+Mesmo preço do site. Zero risco. 💜
+Toque em "Comprar agora" 👇
+TÍTULO: Perfume original, entrega no Brasil inteiro
+DESCRIÇÃO: Pague na marca, receba em casa com garantia.
+CTA: Comprar agora
+🔗 COLE SEU LINK AQUI (URL do site): ${c.natura}  |  ${c.boticario}`,
+`ANÚNCIO 3 — "Presente certeiro"
+TEXTO PRINCIPAL:
+Precisa de um presente que agrada de verdade? Perfume Natura ou Boticário é lembrado por anos. E o melhor: você compra no site oficial da marca, paga por Pix ou cartão com total segurança e a própria marca entrega na casa de quem você ama — em qualquer cidade do Brasil, com rastreio e garantia.
+Não sabe qual escolher? Eu sou consultora oficial e te indico as opções certas para cada pessoa.
+Toque em "Saiba mais" e surpreenda 🎁
+TÍTULO: O presente que chega na casa dela (ou dele)
+DESCRIÇÃO: Compra no site oficial, envio para todo o Brasil.
+CTA: Saiba mais
+🔗 COLE SEU LINK AQUI (URL do site): ${c.natura}  |  ${c.boticario}`];
+  $('#adOut').innerHTML=P.map((t,i)=>outBlock(`Anúncio base ${i+1}`,t)).join('');toast('3 anúncios carregados')}
+
+// Links
+function renderLinkList(){const l=S.get('links',[]);$('#lkList').innerHTML=l.length?l.map(x=>`<div class="linkrow"><span class="tag plum">${x.src}</span><span class="tag ${x.dest==='natura'?'nat':x.dest==='boticario'?'bot':'gold'}">${x.dest}</span><code>${esc(x.u)}</code><button class="btn btn-ghost btn-xs" onclick="copy('${x.u}')">Copiar</button></div>`).join(''):'<i style="color:var(--mute);font-size:13px">Nenhum link gerado ainda.</i>'}
+function renderQR(){const dest=$('#qrSel').value;const u=link(dest,'qr','qr');try{const q=qrcode(0,'M');q.addData(u);q.make();$('#qrBox').innerHTML=q.createImgTag(5,8)}catch(e){$('#qrBox').textContent='QR indisponível offline'}}
+
+// CRM
+function renderCRM(){const q=($('#cSearch').value||'').toLowerCase();const l=S.get('crm',[]).filter(c=>!q||(c.name+' '+c.int+' '+c.city+' '+c.status).toLowerCase().includes(q));$('#cBody').innerHTML=l.length?l.map(c=>`<tr><td><b>${esc(c.name)}</b><br><small style="color:var(--mute)">${esc(c.city||'')}</small></td><td>${esc(c.int||'—')}</td><td><select onchange="setStatus(${c.id},this.value)" style="padding:4px 6px;border-radius:8px;border:1px solid var(--line)">${['novo','quente','comprou','vip','frio'].map(s=>`<option ${c.status===s?'selected':''} value="${s}">${s}</option>`).join('')}</select></td><td>${c.last?fmtDate(c.last):'<i style="color:var(--mute)">nunca</i>'}</td><td style="white-space:nowrap"><button class="btn btn-primary btn-xs" onclick="follow(${c.id})">✨ Mensagem</button> ${c.phone?`<a class="btn btn-wa btn-xs" href="${waLink(c.phone)}" target="_blank" rel="noopener" onclick="touch(${c.id})">WhatsApp</a>`:''} <button class="btn btn-ghost btn-xs" onclick="delC(${c.id})">✕</button></td></tr>`).join(''):'<tr><td colspan="5" style="text-align:center;color:var(--mute)">Nenhum cliente ainda. Cadastre quem perguntou sobre perfume!</td></tr>'}
+function setStatus(id,v){const l=S.get('crm',[]);const c=l.find(x=>x.id===id);if(c){c.status=v;S.set('crm',l);renderCRM()}}
+function touch(id){const l=S.get('crm',[]);const c=l.find(x=>x.id===id);if(c){c.last=Date.now();S.set('crm',l);renderCRM()}}
+function delC(id){if(!confirm('Remover cliente?'))return;S.set('crm',S.get('crm',[]).filter(x=>x.id!==id));renderCRM()}
+async function follow(id){const c=S.get('crm',[]).find(x=>x.id===id);if(!c)return;$('#cMsgCard').style.display='block';$('#cMsgTitle').textContent='Mensagens para '+c.name;$('#cMsgOut').innerHTML='<div class="out"><span class="spin" style="border-color:var(--plum3);border-right-color:transparent"></span> escrevendo...</div>';let v;try{if(!aiOn())throw 0;const t=await aiCall([{role:'system',content:SYS()},{role:'user',content:`Escreva 2 mensagens curtas de WhatsApp (máx 60 palavras cada) da consultora para a cliente ${c.name} (${c.city||'cidade não informada'}), status "${c.status}", interesse: "${c.int||'perfumes'}". Natural, sem parecer robô, com 1 emoji no máximo por mensagem. A segunda deve incluir o link oficial adequado. Separe com "===". Sem markdown.`}],{max:500});v=t.split(/\n=+\n/).map(s=>s.trim()).filter(Boolean);if(!v.length)throw 0}catch(e){v=localFollow(c)}
+  $('#cMsgOut').innerHTML=v.map((t,i)=>outBlock(`Opção ${i+1}`,t)+(c.phone?`<a class="btn btn-wa btn-sm" style="margin:-6px 0 6px" href="${waLink(c.phone,t)}" target="_blank" rel="noopener" onclick="touch(${c.id})">Enviar no WhatsApp</a>`:'')).join('');$('#cMsgCard').scrollIntoView({behavior:'smooth'})}
+
+// Instagram
+const HASH={geral:['perfume','perfumes','perfumaria','perfumeimportado','perfumefeminino','perfumemasculino','cheirinhobom','perfumesoriginais','amoperfume','dicadeperfume','perfumedodia','fragrancia','perfumesnacionais','perfumeonline','perfumeemcasa'],natura:['natura','naturacosmeticos','consultoranatura','perfumenatura','kaiak','essencialnatura','naturaekos','naturahumor','luna','ilia','revendedoranatura','naturabrasil','ciclonatura','promocaonatura'],boticario:['oboticario','boticario','malbec','lilyboticario','egeo','coffeeboticario','floratta','quasar','revendedoraboticario','perfumeboticario','boticariooficial','presenteboticario','promocaoboticario'],presente:['presente','dicadepresente','presentecriativo','presenteparaela','presenteparaele','presentedenatal','presentediadasmaes','presentenamorados','presenteamigosecreto','kitpresente','presenteperfeito','natal2026'],masc:['perfumemasculino','perfumesmasculinos','malbec','kaiak','essencialmasculino','homemelegante','cheirodehomem','perfumedehomem','estilomasculino','presenteparahomem','barba','modamasculina'],local:['saojosedoscampos','sjc','valedoparaiba','taubate','jacarei','cacapava','sjcampos','vale','litoralnorte','saopaulo','interiorsp','sjcnews','sjcbrasil']};
+function renderHash(){$('#hsOut').innerHTML=HASH[$('#hsSet').value].map(h=>`<span onclick="copy('#${h}')">#${h}</span>`).join('')}
+function igSearch(){const q=$('#igQ').value.trim()||'perfume',city=$('#igCity').value.trim(),type=$('#igType').value;const tag=s=>s.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'').replace(/[^a-z0-9]/g,'');const out=[];
+  if(type==='tag'){[q,q+' '+city,q+' original',q+' promoção','consultora '+q].forEach(s=>out.push(['#'+tag(s),`https://www.instagram.com/explore/tags/${tag(s)}/`]));out.push(['Google: posts recentes',`https://www.google.com/search?q=${encodeURIComponent('site:instagram.com '+q+' '+city)}`])}
+  else if(type==='people'){[q,'consultora natura '+city,'revendedora boticário '+city,'perfumaria '+city,'perfumes importados '+city].forEach(s=>out.push([s,`https://www.instagram.com/explore/search/keyword/?q=${encodeURIComponent(s)}`]));out.push(['Google: concorrentes',`https://www.google.com/search?q=${encodeURIComponent('perfumes '+city+' instagram')}`])}
+  else{[city+' centro',city+' shopping','vale do paraíba',city+' faculdade',city+' academia'].forEach(s=>out.push([s,`https://www.instagram.com/explore/search/keyword/?q=${encodeURIComponent(s)}`]))}
+  $('#igOut').innerHTML=out.map(x=>`<div class="linkrow"><b style="font-size:13px;flex:1">${esc(x[0])}</b><a class="btn btn-ig btn-xs" href="${x[1]}" target="_blank" rel="noopener">Abrir</a></div>`).join('')+`<div class="note"><b>Como usar:</b> abra a busca, veja quem postou/comentou sobre perfume nos últimos dias, curta e deixe um comentário útil (não venda no comentário). Quem responder, você chama na DM e cadastra em <b>Clientes</b>.</div>`}
+async function renderBio(){const c=S.cfg;const site=location.origin+location.pathname;let v=[`✨ Perfumes Natura & Boticário\n📦 Compra no site oficial · entrega em todo o Brasil\n💜 Te ajudo a escolher o seu\n👇 Vitrine + IA que acha seu perfume\n${site}`,`Consultora oficial Natura e O Boticário 🌸\n${c.city.split('/')[0]} → Brasil inteiro 🚚\nPix ou cartão, direto na marca 🔒\nDescubra seu perfume ideal 👇\n${site}`,`Seu perfume, entregue na sua porta 🏠\nOriginal · site oficial · garantia da marca\nMe chama que eu indico o certo pra você 💬\n${site}`];
+  try{if(!aiOn())throw 0;const t=await aiCall([{role:'system',content:SYS()},{role:'user',content:`Escreva 3 bios de Instagram (máx 150 caracteres cada, 4 linhas, emojis) para a consultora, deixando claro: compra no site oficial, entrega todo o Brasil, ajuda para escolher. Termine cada uma com a linha ${site}. Separe com "===". Sem markdown.`}],{max:400});const x=t.split(/\n=+\n/).map(s=>s.trim()).filter(Boolean);if(x.length>=2)v=x}catch(e){}
+  $('#bioOut').innerHTML=v.map((t,i)=>outBlock('Bio '+(i+1),t)).join('')}
+
+// Calendar
+const CAL_T=[['Dica olfativa','Carrossel','3 perfumes que fixam o dia inteiro (e por quê)'],['Prova social','Story','Print de cliente feliz + "chegou em 4 dias em {cidade}"'],['Bastidor','Reels 15s','Como funciona comprar pelo meu link: abro o site oficial, pago no Pix, pronto'],['Oferta','Story + link','Promoção do dia no site oficial (sticker de link)'],['Educação','Post','Diferença entre colônia, deo parfum e eau de parfum'],['Presente','Carrossel','5 presentes que nunca erram (Malbec, Lily, Essencial, Kaiak, Luna)'],['Autoridade','Reels','Eu testei: fixação do Essencial vs Malbec'],['Interação','Story enquete','"Doce ou fresco?" → responde quem votou com indicação'],['Quiz','Story + link','Descubra seu perfume ideal em 1 minuto (link da vitrine)'],['Segurança','Post','Como saber que o perfume é original: compre no site oficial'],['Masculino','Carrossel','3 perfumes para o homem que não gosta de perfume'],['Feminino','Reels','Perfume para o dia e perfume para a noite: a dupla perfeita'],['Pacote','Post','Pacote Natura Presente Certeiro: o que vem e para quem'],['Comparativo','Carrossel','Kaiak vs Quasar: qual é o seu?'],['Cliente','Story','Resposta a dúvida real de cliente (sem nome)'],['Oferta','Story + link','Combo Boticário em promoção no site oficial'],['Lifestyle','Reels','Um dia com Luna: manhã, tarde e noite'],['Curiosidade','Post','Por que perfume cheira diferente em cada pessoa'],['Presente','Story + link','Falta pouco para a data: compre hoje e receba a tempo'],['Bastidor','Story','Como eu monto a indicação ideal para cada cliente'],['Prova social','Carrossel','3 clientes, 3 cidades, 3 entregas'],['Oferta','Reels','Lançamento no site oficial: minha opinião sincera'],['Educação','Post','Onde aplicar perfume para durar mais'],['Interação','Story caixinha','"Me conta seu perfume favorito" → vira conteúdo'],['Masculino','Story + link','Presente para ele: 3 opções, 3 preços'],['Feminino','Carrossel','Florais para quem acha floral "cheiro de vó" (não é)'],['Pacote','Story + link','Monte seu kit no site oficial em 2 minutos'],['Autoridade','Reels','Erros ao comprar perfume online (e como evitar)'],['Fechamento','Story','Últimas horas da oferta no site oficial'],['Gratidão','Post','Obrigada por confiar: resumo do mês e próximas datas']];
+function renderCal(){let cal=S.get('cal',null);if(!cal){cal=[];const start=new Date();const shift=Math.floor(Math.random()*CAL_T.length);for(let i=0;i<30;i++){const d=new Date(start.getTime()+i*864e5);const t=CAL_T[(i+shift)%CAL_T.length];cal.push({date:d.toLocaleDateString('pt-BR',{weekday:'short',day:'2-digit',month:'2-digit'}),theme:t[0],fmt:t[1],title:t[2],hook:t[2].replace('{cidade}','Campinas')})}S.set('cal',cal)}
+  $('#calGrid').innerHTML=cal.map((d,i)=>`<div class="day" onclick="calPost(${i})" style="cursor:pointer"><b>${d.date} · ${d.theme}</b><div class="t">${esc(d.title)}</div><div class="f">${d.fmt} · toque para gerar</div></div>`).join('')}
+async function calPost(i){const d=S.get('cal',[])[i];$('#calOutCard').style.display='block';$('#calOutTitle').textContent=d.date+' · '+d.title;$('#calOut').innerHTML='<div class="out"><span class="spin" style="border-color:var(--plum3);border-right-color:transparent"></span> escrevendo...</div>';let t;
+  try{if(!aiOn())throw 0;t=await aiCall([{role:'system',content:SYS()},{role:'user',content:`Escreva o conteúdo completo para Instagram. Formato: ${d.fmt}. Tema: ${d.theme}. Título: ${d.title}. Inclua gancho, corpo, CTA para o link na bio (vitrine) e 10 hashtags. Para carrossel, descreva cada slide. Para Reels, roteiro com tempos. Sem markdown.`}],{max:900})}catch(e){t=localAds({plat:d.fmt.includes('Reels')?'TikTok / Reels (roteiro 30s)':d.fmt.includes('Story')?'Story (sequência de 3 telas)':'Legenda Instagram',brand:'ambas',goal:d.theme,prod:d.title,tone:'Amigável e próximo',notes:''})[0]}
+  $('#calOut').innerHTML=outBlock(d.fmt,t);$('#calOutCard').scrollIntoView({behavior:'smooth'})}
+
+// Kits list
+function renderKitList(){const k=S.get('kits',DEFAULT_KITS);$('#kList').innerHTML=k.map((x,i)=>`<div class="linkrow"><span class="tag ${x.brand==='natura'?'nat':'bot'}">${brandName(x.brand)}</span><b style="flex:1;font-size:14px">${esc(x.name)}</b><small style="color:var(--mute)">${x.items.length} itens</small><button class="btn btn-ghost btn-xs" onclick="delKit(${i})">✕</button></div>`).join('')}
+function delKit(i){const k=S.get('kits',DEFAULT_KITS);k.splice(i,1);S.set('kits',k);renderKitList();renderKits()}
+
+// Config
+function fillCfg(){const c=S.cfg;$('#cfgName').value=c.name;$('#cfgWa').value=c.wa;$('#cfgNat').value=c.natura;$('#cfgBot').value=c.boticario;$('#cfgIg').value=c.instagram;$('#cfgCity').value=c.city;$('#cfgWaMsg').value=c.waMsg;$('#aiProv').value=c.ai.prov||'local';$('#aiKey').value=c.ai.key||'';$('#aiUrl').value=c.ai.url||'';$('#aiModel').value=c.ai.model||'';$('#aiExtra').classList.toggle('hide',$('#aiProv').value!=='openai_compat')}
+
+// Tiers
+function renderTiers(){$('#tiers').innerHTML=`
+<div class="tier cur"><span class="lbl">VOCÊ ESTÁ AQUI</span><h3>Nível 1 · Vitrine Inteligente</h3><div class="price">Entregue</div><p style="font-size:13px;color:var(--mute)">Base profissional para vender hoje.</p><ul><li>Vitrine pública com seus links oficiais</li><li>Quiz "perfume ideal" com IA</li><li>Consultora virtual (chat) 24h</li><li>Catálogo curado + pacotes/kits</li><li>Gerador de anúncios, legendas e stories</li><li>Links rastreáveis (UTM) + QR Code</li><li>CRM de clientes com follow-up por IA</li><li>Radar Instagram + hashtags + bio</li><li>Calendário de 30 dias de conteúdo</li><li>Contador de cliques e eventos</li></ul></div>
+<div class="tier t2"><span class="lbl">PRÓXIMO PASSO</span><h3>Nível 2 · Máquina de Vendas</h3><div class="price">R$ 1.200</div><p style="font-size:13px;color:var(--mute)">Feito pelo Wellington. O app começa a trabalhar sozinho.</p><ul><li>Domínio próprio (ex.: brunaperfumes.com.br) + app instalável com sua marca</li><li>Captura de leads automática no quiz (nome + WhatsApp) com envio para o seu CRM</li><li>Follow-up automático por WhatsApp (sequência de 3 mensagens) para cada lead</li><li>Dados na nuvem: CRM, cliques e leads sincronizados entre celular e computador</li><li>Painel de métricas real por campanha (qual anúncio gerou mais cliques)</li><li>Catálogo com fotos e preços atualizados dos sites oficiais</li><li>Pixel do Meta instalado para anúncios otimizados</li><li>IA premium (Claude) sem limite de uso, já configurada</li></ul><p style="font-size:12px;color:var(--mute)">Resultado esperado: dobrar os cliques qualificados e nunca mais perder um lead.</p></div>
+<div class="tier t3"><span class="lbl">TOPO</span><h3>Nível 3 · Vendedora Autônoma</h3><div class="price">R$ 1.500</div><p style="font-size:13px;color:#E9D9EC">Feito pelo Wellington. Vende por você, 24 horas por dia.</p><ul><li>Agente de IA no seu WhatsApp (número oficial) que atende, indica perfumes e envia o link certo</li><li>Reativação automática de clientes (aniversários, datas comemorativas, "faz 60 dias que você comprou")</li><li>Campanhas de Meta Ads criadas e otimizadas por IA (criativos + públicos + orçamento)</li><li>Vídeos curtos (Reels) gerados por IA com narração em português</li><li>Programa de indicação: cliente ganha vantagem ao indicar amigas</li><li>Relatório semanal automático no seu WhatsApp: cliques, leads, vendas estimadas</li><li>Multi-marca: expansão para Avon, Eudora e outras</li><li>Suporte prioritário do Wellington por 90 dias</li></ul><p style="font-size:12px;color:#E9D9EC">Resultado esperado: faturamento recorrente sem depender do seu tempo.</p></div>`}
+
+/* ======================= BOOT ======================= */
+initSite();route();
+if('serviceWorker' in navigator){navigator.serviceWorker.register('sw.js').catch(()=>{})}
+</script>
+</body>
+</html>
